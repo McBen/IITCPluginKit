@@ -35,7 +35,7 @@ module.exports = merge(CommonConfig, {
     output: {
         filename: `${global.config.id || "myplugin"}.dev.user.js`,
         path: path.resolve(__dirname, '../../../dist'),
-        devtoolModuleFilenameTemplate: `webpack://[namespace]/${global.config.outputname || "myplugin"}/[resource-path]?[loaders]`
+        devtoolModuleFilenameTemplate: `webpack://[namespace]/${global.config.id || "myplugin"}/[resource-path]?[loaders]`
     },
 
 });
