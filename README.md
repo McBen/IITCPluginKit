@@ -20,6 +20,9 @@ Required software
 - [nodejs](https://nodejs.org)
 - [yarn](https://yarnpkg.com)
 
+Tutorial
+============
+see:  https://github.com/McBen/IITCPluginKit_Example/wiki
 
 Starting a new plugin
 ============
