@@ -3,6 +3,10 @@
   "author": "McBen",
   "version": "1.0.1",
   "license": "BSD-1-Clause",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/McBen/IITCPluginKit.git"
+  },
   "dependencies": {
     "@types/gapi.auth2": "^0.0.52",
     "@types/jquery": "^3.3.9",
