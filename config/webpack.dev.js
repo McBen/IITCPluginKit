@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const Merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const path = require('path');
 const dateFormat = require('dateformat');
 const { gitDescribeSync } = require('git-describe');
@@ -28,7 +28,7 @@ global.versionStringScript = function () {
 const CommonConfig = require('./webpack.common.js');
 
 
-module.exports = Merge(CommonConfig, {
+module.exports = merge(CommonConfig, {
 
     mode: 'development',
 
