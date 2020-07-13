@@ -1,12 +1,13 @@
 'use strict';
 
 const ConcatSource = require('webpack-sources').ConcatSource;
-
+const fs = require('fs');
+const path = require('path');
 
 
 class GMAddonBannerPlugin {
     constructor(options) {
-        if(arguments.length > 1)
+        if (arguments.length > 1)
             throw new Error('GMAddonBannerPlugin only takes one argument (pass an options object)');
         this.options = options || {};
     }
@@ -15,37 +16,22 @@ class GMAddonBannerPlugin {
     apply(compiler) {
         compiler.hooks.compilation.tap('GMAddonBannerPlugin', compilation => {
             compilation.hooks.afterOptimizeChunkAssets.tap('GMAddonBannerPlugin', (chunks) => {
-                chunks.forEach( chunk => {
-
-                    let banner = this.generateMetaBlock();
-
+                chunks.forEach(chunk => {
                     chunk.files.forEach((file) => {
-                        let basename;
-                        let query = '';
-                        let filename = file;
-                        const hash = compilation.hash;
-                        const querySplit = filename.indexOf('?');
+                        let filename = file.replace(/\?.*/, "");
 
-                        if(querySplit >= 0) {
-                            query = filename.substr(querySplit);
-                            filename = filename.substr(0, querySplit);
+                        this.updateDownloadURL(filename);
+                        let banner = this.generateMetaBlock(filename);
+
+                        if (this.options.downloadURL) {
+                            const outname = compilation.outputOptions.path + "/" + filename.replace(".user.", ".meta.");
+                            fs.mkdirSync(path.dirname(outname), { recursive: true });
+
+                            const withoutIcon = banner.replace(/^\/\/\s+@icon64.+\n/m, "")
+                            fs.writeFileSync(outname, withoutIcon);
                         }
 
-                        if(filename.indexOf('/') < 0) {
-                            basename = filename;
-                        } else {
-                            basename = filename.substr(filename.lastIndexOf('/') + 1);
-                        }
-
-                        const comment = compilation.getPath(banner, {
-                            hash,
-                            chunk,
-                            filename,
-                            basename,
-                            query
-                        });
-
-                        return compilation.assets[file] = new ConcatSource(comment, '\n', compilation.assets[file]);
+                        return compilation.assets[file] = new ConcatSource(banner, '\n', compilation.assets[file]);
                     });
                 });
             });
@@ -53,38 +39,48 @@ class GMAddonBannerPlugin {
     }
 
 
+    updateDownloadURL(filename) {
+        if (!this.options.downloadURL) return;
+
+        const regex = new RegExp("/" + filename + "$");
+        const path = this.options.downloadURL.replace(regex, "").replace(/\/$/, "");
+        this.options.downloadURL = path + "/" + filename;
+        this.options.updateURL = path + "/" + filename.replace(".user.", ".meta.");
+    }
+
+
     generateMetaBlock() {
         const options = this.options;
-        const std_entries=['name', 'category', 'version', 'namespace', 'updateURL', 'downloadURL', 'description','match', 'include', 'grant', 'run-at'];
+        const std_entries = ['name', 'id', 'category', 'version', 'namespace', 'updateURL', 'downloadURL', 'description', 'match', 'include', 'grant', 'run-at'];
 
-        var entries=[];
-        std_entries.forEach( (cat)=>{
+        var entries = [];
+        std_entries.forEach((cat) => {
             if (options[cat]) {
-                this.createMetaEntry(entries,cat,options[cat]);
+                this.createMetaEntry(entries, cat, options[cat]);
             }
         });
 
         for (let cat in options) {
-            if (std_entries.indexOf(cat)==-1) {
+            if (std_entries.indexOf(cat) == -1) {
                 this.createMetaEntry(entries, cat, options[cat]);
             }
         }
 
-        return '// ==UserScript==\n'+entries.join('\n')+'\n// ==/UserScript==';
+        return '// ==UserScript==\n' + entries.join('\n') + '\n// ==/UserScript==';
     }
 
 
     createMetaEntry(entries, name, value) {
-        if (typeof(value)=='function') {
+        if (typeof (value) == 'function') {
             value = value();
         }
 
-        let key = ('// @' + name + ' '.repeat(16)).substr(0,20);
+        let key = ('// @' + name + ' '.repeat(16)).substr(0, 20);
 
         if (Array.isArray(value)) {
-            value.forEach((val)=> { entries.push(key+val); });
+            value.forEach((val) => { entries.push(key + val); });
         } else {
-            entries.push(key+value);
+            entries.push(key + value);
         }
     }
 

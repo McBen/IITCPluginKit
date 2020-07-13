@@ -97,6 +97,7 @@ function createPluginConf(options) {
         description: options.description,
         author: options.author,
         entry: options.entry,
+        downloadURL: options.downloadURL
     };
 
     fs.writeFileSync(PLUGIN_CONFIG, JSON.stringify(pluginConfig, null, 2));
