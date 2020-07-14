@@ -54,6 +54,8 @@
     "eslint-plugin-unicorn": "^20.1.0"
   },
   "scripts": {
+    "build": "tsc",
+    "prepublish": "tsc",
     "buildcli": "tsc --build tsconfigCLI.json"
   },
   "main": "dist/Plugin.js",
