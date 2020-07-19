@@ -4,7 +4,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const CommonConfig = require('./webpack.common.js');
 
-
 module.exports = merge(CommonConfig, {
 
     mode: 'production',
@@ -14,8 +13,7 @@ module.exports = merge(CommonConfig, {
         path: path.resolve(__dirname, '../../../dist')
     },
 
-    plugins: [
-    ],
+    plugins: [],
 
     module: {
         rules: [
@@ -35,6 +33,7 @@ module.exports = merge(CommonConfig, {
     },
 
     optimization: {
+        minimize: !!global.config.minimize,
         minimizer: [
             new TerserPlugin({
                 terserOptions: {
@@ -46,5 +45,3 @@ module.exports = merge(CommonConfig, {
         ]
     }
 });
-
-

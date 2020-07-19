@@ -80,6 +80,7 @@ async function getUserOptions() {
     options.classname = name2class(id);
     options.id = "iitc_plugin_" + name2class(id);
     options.name = "IITC plugin: " + id;
+    options.minimize = oldConf.minimize || false
 
     if (!options.git) {
         options.version = oldConf.version || packageConf.version || "1.0.0";
@@ -97,7 +98,8 @@ function createPluginConf(options) {
         description: options.description,
         author: options.author,
         entry: options.entry,
-        downloadURL: options.downloadURL
+        downloadURL: options.downloadURL,
+        minimize: options.minimize
     };
 
     fs.writeFileSync(PLUGIN_CONFIG, JSON.stringify(pluginConfig, null, 2));

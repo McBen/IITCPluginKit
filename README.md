@@ -80,7 +80,9 @@ Yarn Tool commands
 
 Developer vs Production build
 ==================
-The production code will not include sourcemaps or console commands and the resulting javascript code is minimized.
+The production code will strip of sourcemaps and have some minor optimation.
+If you set `minimize: true` in your plugin.config it will minimize resulting code and remove console.log commands.
+By default this option is off to allow 3rd-party developers to review your code at runtime.
 
 The version number will not contain the build-date in production code. So you should make sure the correct version number is set by setting a git-tag or changing the version number in your plugin.json.
 
