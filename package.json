@@ -55,7 +55,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "prepublish": "tsc",
+    "prepublishOnly": "tsc",
     "buildcli": "tsc --build tsconfigCLI.json"
   },
   "main": "dist/Plugin.js",
