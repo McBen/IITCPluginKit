@@ -1,3 +1,7 @@
+v1.1.1
+- Fixed LineEndings
+- New Option to enable minimizer (default off - for code reviews)
+
 v1.1
 - New "downloadURL" in plugin config
 - updated dependencys
