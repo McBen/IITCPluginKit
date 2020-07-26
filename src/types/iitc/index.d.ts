@@ -1,3 +1,4 @@
+/// <reference path="./android.d.ts" />
 /// <reference path="./dialog.d.ts" />
 /// <reference path="./types.d.ts" />
 /// <reference path="./constants.d.ts" />
@@ -136,11 +137,4 @@ type BootCallback = () => void;
 declare function load(name: string): any;
 
 declare const PLAYER: Intel.PlayerInfo;
-
-interface Android {
-    addPane(id: string, label: string, icon: string): void;
-    intentPosLink(lat: number, lng: number, zoom: number, title: string, isPortal: boolean): void;
-    saveFile(filename: string, mime: string, content: string): void;
-}
-declare var android: Android;
 
