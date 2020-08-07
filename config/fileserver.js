@@ -13,7 +13,7 @@ var IndexPage = function (req, res) {
         var html = '';
 
         fs.readdirSync(publicDir).forEach(file => {
-            if (fs.lstatSync(publicDir + file).isFile()) {
+            if (fs.lstatSync(publicDir + file).isFile() && file.search(/\.user\.js$/) >= 0) {
                 let meta = readScriptMeta(file);
                 html += createScriptBlock(meta);
             }
