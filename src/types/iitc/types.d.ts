@@ -4,12 +4,6 @@
 
 declare namespace IITC {
 
-    /** Event-Data */
-    interface HookLinkAdded {
-        link: IITC.Link;
-    }
-
-
     /** Portal-Marker */
     interface Portal extends L.CircleMarker {
         options: PortalOptions;
@@ -60,6 +54,27 @@ declare namespace IITC {
         oLatE6: number;
         oLngE6: number;
         team: string;
+    }
+
+    /** Field-Polygon */
+    interface Field extends L.GeodesicPolygon {
+        options: FieldOptions;
+    }
+
+    interface FieldOptions extends L.PathOptions {
+        team: number;
+        guid: string;
+        timestamp: number;
+        data: FieldData;
+    }
+
+    interface FieldData {
+        team: string;
+        points: {
+            guid: string;
+            latE6: number;
+            lngE6: number;
+        }[];
     }
 
     /** Search */

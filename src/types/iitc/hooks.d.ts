@@ -57,7 +57,7 @@ type EventMapDataEntityInject = { callback: () => void };
 type EventMapDataRefreshEnd = {};
 type EventPortalAdded = { portal: any, previousData: any };
 type EventLinkAdded = { link: any };
-type EventFieldAdded = { field: any };
+type EventFieldAdded = { field: IITC.Field };
 type EventPortalRemoved = { portal: any, data: any };
 type EventLinkRemoved = { link: any, data: any };
 type EventFieldRemoved = { field: any, data: any };
