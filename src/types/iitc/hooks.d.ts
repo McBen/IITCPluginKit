@@ -52,17 +52,17 @@ type EventPublicChatDataAvailable = { raw: any, result: Intel.ChatLine[], proces
 type EventFactionChatDataAvailable = { raw: any, result: any, processed: any };
 type EventPortalDetailsUpdated = { guid: string, portal: any, portalDetails: any, portalData: any };
 type EventArtifactsUpdated = { old: any, new: any };
-type EventMapDataRefreshStart = { bounds: any, mapZoom: any, dataZoom: any, minPortalLevel: any, tileBounds: any };
-type EventMapDataEntityInject = { callback: () => void };
+type EventMapDataRefreshStart = { bounds: L.latLngBounds, mapZoom: number, dataZoom: number, minPortalLevel: number, tileBounds: L.latLngBounds };
+type EventMapDataEntityInject = { callback: (ents: any) => void }; // TODO: ents = portalDetailLoaded.ent
 type EventMapDataRefreshEnd = {};
-type EventPortalAdded = { portal: any, previousData: any };
-type EventLinkAdded = { link: any };
+type EventPortalAdded = { portal: IITC.Portal, previousData: IITC.PortalData };
+type EventLinkAdded = { link: IITC.Link };
 type EventFieldAdded = { field: any };
 type EventPortalRemoved = { portal: any, data: any };
 type EventLinkRemoved = { link: any, data: any };
 type EventFieldRemoved = { field: any, data: any };
 type EventRequestFinished = { success: boolean };
-type EventNicknameClicked = { event: any, nickname: string };
+type EventNicknameClicked = { event: MouseEvent, nickname: string };
 type EventSearch = any; /* class window.search.Query */
 type EventPortalDetailLoaded = { guid: string, success: boolean, details: any, ent: any };
 type EventPaneChanged = string;
