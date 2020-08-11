@@ -63,7 +63,13 @@ var IndexPage = function (req, res) {
         `;
     }
 
-    res.send('<!DOCTYPE html><html><head><style>' + css() + '</style></head><body>' + scriptList() + '</body>');
+    const head = `<!DOCTYPE html><html><head>
+            <title>IITCPluginKit Fileserver</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+            <style>${css()}</style>
+        </head>`
+
+    res.send(head + `<body>${scriptList()}</body>`);
 };
 
 
