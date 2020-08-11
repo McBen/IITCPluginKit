@@ -10,7 +10,7 @@ declare namespace Intel {
             plextType: "SYSTEM_BROADCAST";
             markup: Array<MarkUpPortal | MarkUpPlayer | MarkUpText>;
             team: "RESISTANCE" | "ENLIGHTENED";
-            plain: string;
+            text: string;
         };
     }
 
