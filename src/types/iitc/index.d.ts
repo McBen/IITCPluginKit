@@ -3,6 +3,7 @@
 /// <reference path="./types.d.ts" />
 /// <reference path="./constants.d.ts" />
 /// <reference path="./hooks.d.ts" />
+/// <reference path="./intel_entity.d.ts" />
 /// <reference path="./intel_chat.d.ts" />
 /// <reference path="./intel_player.d.ts" />
 

@@ -34,6 +34,13 @@ declare namespace IITC {
         title: string;
     }
 
+    interface PortalDataDetails extends PortalData {
+        artifactDetail: any;
+        mods: [];
+        owner: string;
+        resonators: [];
+    }
+
     /** Link-Marker */
     interface Link extends L.GeodesicPolyline {
         options: LinkOptions;
