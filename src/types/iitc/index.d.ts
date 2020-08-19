@@ -19,6 +19,22 @@ interface MapDataRequest {
     status: { short: string };
 }
 
+
+interface PortalDetail {
+    /** Get portal detail from cache */
+    get(guid: string): IITC.PortalDataDetail | undefined;
+
+    /** Get portal detail from cache */
+    isFresh(guid: string): boolean | undefined;
+
+    /** Request Portal details from server 
+     *  NB: you shouldn't use it.
+     */
+    request(guid: string): jQuery.Promise;
+}
+
+
+
 interface Window {
 
     /* #region Variables  */
@@ -58,6 +74,8 @@ interface Window {
     DEFAULT_REFRESH: number;
     MAX_IDLE_TIME: number;
     REFRESH: number;
+
+    portalDetail: PortalDetail;
 
     /* #endregion */
 

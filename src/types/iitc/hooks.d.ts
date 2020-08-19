@@ -67,6 +67,6 @@ type EventSearch = any; /* class search.Query */
 type EventPaneChanged = string;
 
 type PortalDetailEnt = [/*guid*/ string, /*dict.timestamp*/ number, /*data.result*/ Intel.PortalDetails];
-type EventPortalDetailLoaded = { guid: string, success: true, details: IITC.PortalDataDetails, ent: PortalDetailEnt } | { guid: string, success: false, details: never, ent: never };
+type EventPortalDetailLoaded = { guid: string, success: true, details: IITC.PortalDataDetail, ent: PortalDetailEnt } | { guid: string, success: false, details: never, ent: never };
 
 

@@ -34,7 +34,7 @@ declare namespace IITC {
         title: string;
     }
 
-    interface PortalDataDetails extends PortalData {
+    interface PortalDataDetail extends PortalData {
         artifactDetail: any;
         mods: [];
         owner: string;
