@@ -1,3 +1,19 @@
+v1.2.0
+- Images are nolonger any type
+  use:
+    import imageTarget from "../images/target.svg";
+  instead of:
+    import * from imageTarget from "../images/target.svg";
+
+- Android definitions
+- Field definition
+- portalDetail definition
+- Improved Hook definition
+- Fixed a Chat definition
+- Some fileserver tweaks
+- dependencies updated
+
+
 v1.1.1
 - Fixed LineEndings
 - New Option to enable minimizer (default off - for code reviews)
