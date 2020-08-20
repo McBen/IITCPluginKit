@@ -36,9 +36,33 @@ declare namespace IITC {
 
     interface PortalDataDetail extends PortalData {
         artifactDetail: any;
-        mods: [];
+        mods: [Mod | NULL, Mod | NULL, Mod | NULL, Mod | NULL];
         owner: string;
-        resonators: [];
+        resonators: Resonator[];
+    }
+
+    interface Mod {
+        owner: string;
+        name: string;
+        rarity: ModRarity;
+        stats: { [k: ModStats]: string };
+    }
+    type ModStats = "REMOVAL_STICKNESS" | /* all */
+        /* Shield */ "MIGRATION" |
+        /* Turret */ "ATTACK_FREQUENCY" | "HIT_BONUS" |
+        /* Forceamp */ "FORCE_AMPLIFIER" |
+        /* ito- */ "XM_SPIN" |
+        /* Multihack */ "BURNOUT_INSULATION" |
+        /* Heat sink */ "HACK_SPEED" |
+        /* Linkamp */ "LINK_RANGE_MULTIPLIER" |
+        /* sbul */ "LINK_DEFENSE_BOOST" |
+        string; /* dummy for future stuff */
+    type ModRarity = "COMMON" | "RARE" | "VERY_RARE";
+
+    interface Resonator {
+        energy: number;
+        level: number;
+        owner: string;
     }
 
     /** Link-Marker */
