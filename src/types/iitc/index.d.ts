@@ -17,6 +17,7 @@ interface MapDataRequest {
     REFRESH_FAR: number;
     refreshOnTimeout(time: number): void;
     status: { short: string };
+    queuedTiles: {};
 }
 
 
