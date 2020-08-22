@@ -85,9 +85,11 @@ interface Window {
 
     startRefreshTimeout(): void;
 
-    getPortalLinks(guid: string): IITC.PortalLinks;
+    /** Get Links of portal */
+    getPortalLinks(guid: PortalGUID): { in: LinkGUID[]; out: LinkGUID[]; };
 
-    getPortalFields(guid: string): IITC.Field[];
+    /** Get Fields of portal */
+    getPortalFields(guid: PortalGUID): FieldGUID[];
 
 
     /* #region  Portal Viewing */
