@@ -60,6 +60,9 @@ interface Window {
     /** list of all loaded links */
     links: { [guid: string]: IITC.Link };
 
+    /** list of all fields */
+    fields: { [guid: string]: IITC.Field };
+
     /** google-api */
     gapi: any;
 
