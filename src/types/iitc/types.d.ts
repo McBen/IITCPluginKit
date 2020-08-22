@@ -2,15 +2,22 @@
  * @module IITC
  */
 
+type PortalGUID = string;
+type LinkGUID = string;
+type FieldGUID = string;
+
+
 declare namespace IITC {
 
     /** Portal-Marker */
+
     interface Portal extends L.CircleMarker {
         options: PortalOptions;
     }
 
+
     interface PortalOptions extends L.PathOptions {
-        guid: string;
+        guid: PortalGUID;
         ent: any;
         level: number;
         team: number;

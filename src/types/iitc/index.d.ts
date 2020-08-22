@@ -52,16 +52,16 @@ interface Window {
     map: L.Map;
 
     /** guid of current selected portal */
-    selectedPortal: string | null;
+    selectedPortal: PortalGUID | null;
 
     /** list of all loaded portals */
-    portals: { [guid: string]: IITC.Portal };
+    portals: { [guid: string /* PortalGUID */]: IITC.Portal };
 
     /** list of all loaded links */
-    links: { [guid: string]: IITC.Link };
+    links: { [guid: string /* LinkGUID */]: IITC.Link };
 
     /** list of all fields */
-    fields: { [guid: string]: IITC.Field };
+    fields: { [guid: string /* FieldGUID */]: IITC.Field };
 
     /** google-api */
     gapi: any;
@@ -92,10 +92,10 @@ interface Window {
 
     /* #region  Portal Viewing */
     /** Load & show Portal Details Window */
-    renderPortalDetails(guid: string): void;
+    renderPortalDetails(guid: PortalGUID): void;
 
     /** Make sure Portal is visible in Window */
-    zoomToAndShowPortal(guid: string, position: L.LatLng): void;
+    zoomToAndShowPortal(guid: PortalGUID, position: L.LatLng): void;
 
     /* #endregion */
 
