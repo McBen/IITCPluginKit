@@ -5,12 +5,11 @@
 type PortalGUID = string;
 type LinkGUID = string;
 type FieldGUID = string;
-
+type TileID = string;
 
 declare namespace IITC {
 
     /** Portal-Marker */
-
     interface Portal extends L.CircleMarker {
         options: PortalOptions;
     }
@@ -137,5 +136,13 @@ declare namespace IITC {
         icon?: string; // a URL to a icon to display in the result list. Should be 12x12.
         onSelected?: (result: SearchResult, event: UIEvent) => (boolean | void); // a handler to be called when the result is selected. May return `true` to prevent the map from being repositioned. You may reposition the map yourself or do other work.
         onRemove?: (result: SearchResult) => void;
+    }
+
+    interface TileParameters {
+        level: number; // deprecated
+        tilesPerEdge: number;
+        minLinkLength: number;
+        hasPortals: boolean;
+        zoom: number;
     }
 }

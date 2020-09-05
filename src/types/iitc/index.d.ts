@@ -106,10 +106,12 @@ interface Window {
 
 
     // Map Stuff
-    getMapZoomTileParameters(dataZoom: number): any;
+    getMapZoomTileParameters(dataZoom: number): IITC.TileParameters;
     getDataZoomForMapZoom(mapZoom: number): number;
     selectPortalByLatLng(lat: number, lng: number): void;
-
+    lngToTile(longitude: number, params: IITC.TileParameters): number;
+    latToTile(latitude: number, params: IITC.TileParameters): number;
+    pointToTileId(params: IITC.TileParameters, x: number, y: number): IITC.TileID;
 
     /* #region  Helper */
     /** add Layergroup to leaflets layer-chooser */
