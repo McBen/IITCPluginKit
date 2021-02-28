@@ -6,19 +6,16 @@
 /// <reference path="./intel_entity.d.ts" />
 /// <reference path="./intel_chat.d.ts" />
 /// <reference path="./intel_player.d.ts" />
+/// <reference path="./data_cache.ts" />
+/// <reference path="./map_data_request" />
+/// <reference path="./map_data_render" />
+/// <reference path="./map_data_debug" />
+/// <reference path="./map_data_calc_tools" />
+
 
 /**
  * @module IITC
  */
-
-
-interface MapDataRequest {
-    REFRESH_CLOSE: number;
-    REFRESH_FAR: number;
-    refreshOnTimeout(time: number): void;
-    status: { short: string };
-    queuedTiles: {};
-}
 
 
 interface PortalDetail {
