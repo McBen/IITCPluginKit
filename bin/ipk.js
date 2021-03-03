@@ -3,7 +3,6 @@ const fs = require('fs');
 const os = require('os');
 const cp = require('child_process');
 const prompts = require('prompts');
-const { option } = require('yargs');
 const { exit } = require('process');
 
 const MYDIR = "./node_modules/iitcpluginkit";
@@ -170,14 +169,14 @@ function commandBuildPROD(argv) {
 }
 
 function commandServe() {
-    const proc = cp.spawn("node", [MYDIR + "/config/fileserver.js"], { stdio: 'inherit' })
+    const proc = cp.spawn("node", [MYDIR + "/config/fileserver.js"].concat(process.argv.slice(3)), { stdio: 'inherit' })
     proc.on('error', function (err) {
         console.error(err);
     });
 }
 
 function commandAutobuild() {
-    runScript(["concurrently", "--kill-others", "\"yarn build:dev --watch\"", "\"yarn start\""]);
+    runScript(["concurrently", "--kill-others", "\"yarn build:dev --watch\"", "\"yarn start " + process.argv.slice(3).join(" ") + "\""]);
 }
 
 

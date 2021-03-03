@@ -55,6 +55,9 @@ If you prefer the manual way: run ```yarn build``` to build your plugin inside t
 see [Yarn Tool commands](#Yarn-Tool-commands)
 
 
+Note: if you need to change the port 8100 add " -p 8101" to the commands "start" and "autobuild" in you package.json.
+
+
 Coding
 ==================
 At this point `yarn ipk` should already had created your plugin main file. Default: /src/Main.ts. 
