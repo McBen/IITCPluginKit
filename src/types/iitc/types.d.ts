@@ -15,7 +15,7 @@ declare namespace IITC {
     }
 
 
-    interface PortalOptions extends L.PathOptions {
+    interface PortalOptions extends L.CircleOptions {
         guid: PortalGUID;
         ent: any;
         level: number;
