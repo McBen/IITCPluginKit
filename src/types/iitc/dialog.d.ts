@@ -7,6 +7,9 @@ declare function dialog(data: DialogOptions): JQuery;
 
 // see https://jqueryui.com/dialog/
 
+/**
+ * Note: don't use: close,open or focus. these are reserved for iitc dialog useage
+ */
 interface DialogOptions {
     /** If set only one dialog can be open */
     id?: string;

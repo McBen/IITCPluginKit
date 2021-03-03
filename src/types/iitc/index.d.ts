@@ -6,12 +6,15 @@
 /// <reference path="./intel_entity.d.ts" />
 /// <reference path="./intel_chat.d.ts" />
 /// <reference path="./intel_player.d.ts" />
-/// <reference path="./data_cache.ts" />
-/// <reference path="./map_data_request" />
-/// <reference path="./map_data_render" />
-/// <reference path="./map_data_debug" />
-/// <reference path="./map_data_calc_tools" />
-
+/// <reference path="./map_data_render.d.ts" />
+/// <reference path="./map_data_debug.d.ts" />
+/// <reference path="./map_data_calc_tools.d.ts" />
+/// <reference path="./map_data_request.d.ts" />
+/// <reference path="./data_cache.d.ts" />
+/// <reference path="./idle.d.ts" />
+/// <reference path="./idle.d.ts" />
+/// <reference path="./utils_misc.d.ts" />
+/// <reference path="./extraqct_niantic_parameters.d.ts" />
 
 /**
  * @module IITC
