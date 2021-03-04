@@ -2,15 +2,14 @@ const { merge } = require('webpack-merge');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const CommonConfig = require('./webpack.common.js');
-
-module.exports = merge(CommonConfig, {
+const commonConfig = require('./webpack.common.js');
+let develConfig = merge(commonConfig, {
 
     mode: 'production',
 
     output: {
         filename: `${global.config.id || "myplugin"}.user.js`,
-        path: path.resolve(__dirname, '../../../dist')
+        path: path.resolve(process.cwd(), 'dist')
     },
 
     plugins: [],
@@ -45,3 +44,13 @@ module.exports = merge(CommonConfig, {
         ]
     }
 });
+
+
+try {
+    let userConfig = require(path.resolve(process.cwd(), 'webpack.config.js'));
+    if (typeof userConfig === 'function') userConfig = userConfig(develConfig);
+    develConfig = merge(develConfig, userConfig);
+} catch { }
+
+
+module.exports = develConfig;

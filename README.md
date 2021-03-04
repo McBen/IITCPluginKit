@@ -89,3 +89,50 @@ By default this option is off to allow 3rd-party developers to review your code 
 
 The version number will not contain the build-date in production code. So you should make sure the correct version number is set by setting a git-tag or changing the version number in your plugin.json.
 
+
+
+Advanced topics
+==================
+## Images:
+in css:
+```
+.mydiv { background:url("image.png"); }
+``` 
+(svg is currently not supported in CSS!)
+
+in ts:
+```
+  import myimage from "myimage.svg";
+
+  const myIcon = L.icon({iconUrl: myimage});
+```
+
+## CSS / Postcss
+CSS-Examples:
+```
+@import 'buttons'; /* include another css file (postcss-import) */
+
+$IITC_YELOW: #ffce00; /* create variables (postcss-simple-vars) */
+
+.myblock {
+    .anotherblock {  /* nested css (postcss-nested) */
+        color: $IITC_YELOW;
+        background-color: color(red shade(20%)) /* color manipulation (postcss-color-function) */
+    }
+}
+```
+
+## Webpack
+You can tweak or enhance used webpack config by creating a custom config.js in you project root directory.
+webpack.config.js
+```
+module.exports =  {
+    output: {
+        filename: "megaplugin.user.js"
+    }
+};
+```
+or as function: `module.exports = function (config) { config.output.filename="megaplugin.user.js"; }`
+
+
+

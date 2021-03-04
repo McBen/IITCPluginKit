@@ -1,10 +1,10 @@
 const webpack = require('webpack');
 const fs = require('fs');
+const path = require('path');
 const gmbanner = require('./webpack.gmaddon.banner');
 const WrapperPlugin = require('wrapper-webpack-plugin');
 const { gitDescribeSync } = require('git-describe');
 
-const MYDIR = "./node_modules/iitcpluginkit";
 
 
 const config = readConfig('./plugin.json');
@@ -70,7 +70,7 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader',
                     { loader: 'css-loader', options: { importLoaders: 1 } },
-                    { loader: 'postcss-loader', options: { config: { path: MYDIR + '/config/postcss.config.js' } } }
+                    { loader: 'postcss-loader', options: { config: { path: path.resolve(__dirname, 'config/postcss.config.js') } } }
                 ]
             },
             {

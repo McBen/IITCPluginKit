@@ -5,6 +5,7 @@ const dateFormat = require('dateformat');
 const { gitDescribeSync } = require('git-describe');
 
 
+// create special version strings
 global.versionString = function () {
     let version = config.version || 'v0.0.0';
     try {
@@ -25,17 +26,27 @@ global.versionStringScript = function () {
     return str;
 }
 
-const CommonConfig = require('./webpack.common.js');
 
-
-module.exports = merge(CommonConfig, {
+const commonConfig = require('./webpack.common.js');
+let develConfig = merge(commonConfig, {
 
     mode: 'development',
 
     output: {
         filename: `${global.config.id || "myplugin"}.dev.user.js`,
-        path: path.resolve(__dirname, '../../../dist'),
+        path: path.resolve(process.cwd(), 'dist'),
         devtoolModuleFilenameTemplate: `webpack://[namespace]/${global.config.id || "myplugin"}/[resource-path]?[loaders]`
     },
-
 });
+
+
+
+try {
+    let userConfig = require(path.resolve(process.cwd(), 'webpack.config.js'));
+    if (typeof userConfig === 'function') userConfig = userConfig(develConfig);
+    develConfig = merge(develConfig, userConfig);
+} catch { }
+
+
+
+module.exports = develConfig;
