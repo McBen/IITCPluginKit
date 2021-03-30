@@ -115,6 +115,10 @@ module.exports = {
                 "case": "pascalCase",
                 "ignore": ["^index\\.ts$", "^API.*", "\\.schema(\\.ts)?"]
             }],
+        "unicorn/prefer-ternary": "off",
+        "unicorn/no-lonely-if": "off",
+        "unicorn/no-array-reduce": "off",
+        "unicorn/no-array-for-each": "off",
 
         "unicorn/no-reduce": "off",
         "unicorn/no-nested-ternary": "off",
@@ -122,11 +126,14 @@ module.exports = {
         "unicorn/prefer-number-properties": "off",
         "unicorn/prefer-node-append": "off",
         "unicorn/prefer-node-remove": "off",
+        "unicorn/prefer-spread": "off",
         "unicorn/prevent-abbreviations": ["error",
             {
                 "replacements": {
                     "str": { "string": false },
-                    "num": { "number": false }
+                    "num": { "number": false },
+                    "i": { "index": false },
+                    "j": { "index": false },
                 }
             }]
     }
