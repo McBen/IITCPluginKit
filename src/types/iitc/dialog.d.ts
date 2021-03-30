@@ -2,6 +2,12 @@
  * @module IITC
  */
 
+/**
+ * Creates a new dialog
+ * 
+ * @example 
+ * var mydialog = dialog({ title:"Weclome", html: "Hello world"})
+ */
 declare function dialog(data: DialogOptions): JQuery;
 
 
