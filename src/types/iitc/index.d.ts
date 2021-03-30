@@ -1,8 +1,16 @@
-/// <reference path="./android.d.ts" />
-/// <reference path="./dialog.d.ts" />
 /// <reference path="./types.d.ts" />
+/// <reference path="./android.d.ts" />
+/// <reference path="./artifact.d.ts" />
+/// <reference path="./boot.d.ts" />
+/// <reference path="./chat.d.ts" />
+/// <reference path="./dialog.d.ts" />
 /// <reference path="./constants.d.ts" />
+/// <reference path="./data_cache.d.ts" />
+/// <reference path="./entity_decode.d.ts" />
+/// <reference path="./entity_info.d.ts" />
+/// <reference path="./extract_niantic_parameters.d.ts" />
 /// <reference path="./hooks.d.ts" />
+/// <reference path="./idle.d.ts" />
 /// <reference path="./intel_entity.d.ts" />
 /// <reference path="./intel_chat.d.ts" />
 /// <reference path="./intel_player.d.ts" />
@@ -10,11 +18,26 @@
 /// <reference path="./map_data_debug.d.ts" />
 /// <reference path="./map_data_calc_tools.d.ts" />
 /// <reference path="./map_data_request.d.ts" />
-/// <reference path="./data_cache.d.ts" />
-/// <reference path="./idle.d.ts" />
-/// <reference path="./idle.d.ts" />
+/// <reference path="./game_status.d.ts" />
 /// <reference path="./utils_misc.d.ts" />
-/// <reference path="./extraqct_niantic_parameters.d.ts" />
+
+/// <reference path="./ornaments.d.ts" />
+/// <reference path="./panes.d.ts" />
+/// <reference path="./player_names.d.ts" />
+/// <reference path="./portal_data.d.ts" />
+/// <reference path="./portal_detail_display_tools.d.ts" />
+/// <reference path="./portal_detail_display.d.ts" />
+/// <reference path="./portal_hightlighter.d.ts" />
+/// <reference path="./portal_info.d.ts" />
+/// <reference path="./portal_marker.d.ts" />
+/// <reference path="./redeeming.d.ts" />
+/// <reference path="./region_scoreboard.d.ts" />
+/// <reference path="./request_handling.d.ts" />
+/// <reference path="./search.d.ts" />
+/// <reference path="./send_request.d.ts" />
+/// <reference path="./smartphone.d.ts" />
+/// <reference path="./utils_file.d.ts" />
+
 
 /**
  * @module IITC
