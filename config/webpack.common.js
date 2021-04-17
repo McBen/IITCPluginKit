@@ -67,7 +67,7 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.css$/,
+                test: /\.p?css$/,
                 use: ['style-loader',
                     { loader: 'css-loader', options: { importLoaders: 1 } },
                     { loader: 'postcss-loader', options: { config: { path: path.resolve(__dirname, 'config/postcss.config.js') } } }
