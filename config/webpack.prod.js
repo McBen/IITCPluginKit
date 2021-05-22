@@ -50,7 +50,11 @@ try {
     let userConfig = require(path.resolve(process.cwd(), 'webpack.config.js'));
     if (typeof userConfig === 'function') userConfig = userConfig(develConfig);
     develConfig = merge(develConfig, userConfig);
-} catch { }
+} catch (error) {
+    if (error.code !== 'MODULE_NOT_FOUND') {
+        console.log(error);
+    }
+}
 
 
 module.exports = develConfig;
