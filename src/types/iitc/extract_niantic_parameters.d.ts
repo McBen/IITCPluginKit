@@ -7,10 +7,11 @@ declare global {
      * so we need to extract some essential parameters from the code for IITC to use
      */
     function extractFromStock(): void;
+
+    declare namespace niantic_params {
+        const CURRENT_VERSION: string;
+        const ZOOM_TO_LEVEL: number[];
+        const TILES_PER_EDGE: number[];
+    }
 }
 
-declare namespace niantic_params {
-    const CURRENT_VERSION: string;
-    const ZOOM_TO_LEVEL: number[];
-    const TILES_PER_EDGE: number[];
-}
