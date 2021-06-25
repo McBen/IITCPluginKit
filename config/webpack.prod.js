@@ -48,9 +48,16 @@ let develConfig = merge(commonConfig, {
 
 try {
     let userConfig = require(path.resolve(process.cwd(), 'webpack.config.js'));
-    if (typeof userConfig === 'function') userConfig = userConfig(develConfig);
-    develConfig = merge(develConfig, userConfig);
-} catch { }
+    if (typeof userConfig === 'function') {
+        userConfig(develConfig);
+    } else {
+        develConfig = merge(develConfig, userConfig);
+    }
+} catch (error) {
+    if (error.code !== 'MODULE_NOT_FOUND') {
+        console.log(error);
+    }
+}
 
 
 module.exports = develConfig;

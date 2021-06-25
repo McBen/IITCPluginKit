@@ -42,7 +42,7 @@ const SCRIPT_FOOTER = `
 (function () {
   const info = {};
   if (typeof GM_info !== 'undefined' && GM_info && GM_info.script) 
-    info.script = { version: GM_info.script.version, name: GM_info.script.name };
+    info.script = { version: GM_info.script.version, name: GM_info.script.name, description: GM_info.script.description };
   if (typeof unsafeWindow != 'undefined' || typeof GM_info == 'undefined' || GM_info.scriptHandler != 'Tampermonkey') {    
     const script = document.createElement('script');
     script.appendChild(document.createTextNode( '('+ wrapper +')('+JSON.stringify(info)+');'));
@@ -67,7 +67,7 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.css$/,
+                test: /\.p?css$/,
                 use: ['style-loader',
                     { loader: 'css-loader', options: { importLoaders: 1 } },
                     { loader: 'postcss-loader', options: { config: { path: path.resolve(__dirname, 'config/postcss.config.js') } } }

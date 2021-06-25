@@ -31,7 +31,8 @@ class GMAddonBannerPlugin {
                             fs.writeFileSync(outname, withoutIcon);
                         }
 
-                        return compilation.assets[file] = new ConcatSource(banner, '\n', compilation.assets[file]);
+                        const extra = this.options.banner || "";
+                        return compilation.assets[file] = new ConcatSource(extra, '\n', banner, '\n', compilation.assets[file]);
                     });
                 });
             });
@@ -52,6 +53,7 @@ class GMAddonBannerPlugin {
     generateMetaBlock() {
         const options = this.options;
         const std_entries = ['name', 'id', 'category', 'version', 'namespace', 'updateURL', 'downloadURL', 'description', 'match', 'include', 'grant', 'run-at'];
+        const ignore = ['banner'];
 
         var entries = [];
         std_entries.forEach((cat) => {
@@ -61,7 +63,7 @@ class GMAddonBannerPlugin {
         });
 
         for (let cat in options) {
-            if (std_entries.indexOf(cat) == -1) {
+            if (std_entries.indexOf(cat) === -1 && ignore.indexOf(cat) === -1) {
                 this.createMetaEntry(entries, cat, options[cat]);
             }
         }
