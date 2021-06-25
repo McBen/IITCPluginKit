@@ -1,9 +1,8 @@
-declare global {
-	declare namespace L {
-		export interface GridLayer {
-			googleMutant(options: any): TileLayer;
-		}
 
-		export var gridLayer: GridLayer;
+declare namespace L {
+	export interface GridLayer {
+		googleMutant(options: any): TileLayer;
 	}
+
+    export var gridLayer: GridLayer;
 }
