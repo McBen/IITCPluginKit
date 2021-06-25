@@ -1,4 +1,5 @@
 const express = require('express');
+const myIP = require('my-ip');
 const fs = require('fs');
 
 let port = 8100;
@@ -10,6 +11,9 @@ if (pidx === -1) pidx = process.argv.indexOf("--port");
 if (pidx !== -1) port = parseInt(process.argv[pidx + 1])
 
 
+function localIP() {
+    return myIP() + ":" + port;
+}
 
 var IndexPage = function (request, response) {
 
@@ -95,7 +99,8 @@ app.get('/index', IndexPage);
 app.use(express.static(publicDir));
 
 app.listen(port, function () {
-    console.log('ScriptServer listening at http://localhost:%s (use -p number to change port)', port);
+    console.log('ScriptServer listening at http://%s or http://localhost:%s', localIP(), port);
+    console.log(' (use -p number to change port)');
     console.log('  serving files from %s', publicDir);
 });
 

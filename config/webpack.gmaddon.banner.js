@@ -1,6 +1,7 @@
 'use strict';
 
 const ConcatSource = require('webpack-sources').ConcatSource;
+const Compilation = require('webpack/lib/Compilation');
 const fs = require('fs');
 const path = require('path');
 
@@ -14,28 +15,37 @@ class GMAddonBannerPlugin {
 
 
     apply(compiler) {
-        compiler.hooks.compilation.tap('GMAddonBannerPlugin', compilation => {
-            compilation.hooks.afterOptimizeChunkAssets.tap('GMAddonBannerPlugin', (chunks) => {
-                chunks.forEach(chunk => {
-                    chunk.files.forEach((file) => {
-                        let filename = file.replace(/\?.*/, "");
 
-                        this.updateDownloadURL(filename);
-                        let banner = this.generateMetaBlock(filename);
+        const plugin = {
+            name: this.constructor.name,
+            stage: Compilation.PROCESS_ASSETS_STAGE_SUMMARIZE
+        };
 
-                        if (this.options.downloadURL) {
-                            const outname = compilation.outputOptions.path + "/" + filename.replace(".user.", ".meta.");
-                            fs.mkdirSync(path.dirname(outname), { recursive: true });
 
-                            const withoutIcon = banner.replace(/^\/\/\s+@icon64.+\n/m, "")
-                            fs.writeFileSync(outname, withoutIcon);
-                        }
+        compiler.hooks.compilation.tap(plugin, compilation => {
+            compilation.hooks.processAssets.tap(plugin,
+                () => {
+                    compilation.chunks.forEach(chunk => {
+                        chunk.files.forEach((file) => {
+                            let filename = file.replace(/\?.*/, "");
 
-                        const extra = this.options.banner || "";
-                        return compilation.assets[file] = new ConcatSource(extra, '\n', banner, '\n', compilation.assets[file]);
+                            this.updateDownloadURL(filename);
+                            let banner = this.generateMetaBlock(filename);
+
+                            if (this.options.downloadURL) {
+                                const outname = compilation.outputOptions.path + "/" + filename.replace(".user.", ".meta.");
+                                fs.mkdirSync(path.dirname(outname), { recursive: true });
+                                fs.writeFileSync(outname, banner);
+                            }
+
+                            let extraBanner = "";
+                            if (this.options.banner) {
+                                extraBanner = this.options.banner + "\n";
+                            }
+                            return compilation.assets[file] = new ConcatSource(extraBanner, banner, '\n', compilation.assets[file]);
+                        });
                     });
                 });
-            });
         });
     }
 

@@ -20,6 +20,7 @@
     "dateformat": "^4.5.1",
     "express": "^4.16.2",
     "git-describe": "^4.0.2",
+    "my-ip": "^1.1.1",
     "postcss-color-function": "^4.0.1",
     "postcss-import": "^12.0.0",
     "postcss-loader": "^3.0.0",
