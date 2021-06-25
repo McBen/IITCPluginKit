@@ -1,3 +1,6 @@
+v1.4.0
+- webpack v5
+
 v1.2.0
 - Images are nolonger any type
   use:
