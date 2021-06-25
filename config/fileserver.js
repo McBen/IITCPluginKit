@@ -11,7 +11,7 @@ if (pidx !== -1) port = parseInt(process.argv[pidx + 1])
 
 
 
-var IndexPage = function (req, res) {
+var IndexPage = function (request, response) {
 
     function scriptList() {
 
@@ -47,9 +47,14 @@ var IndexPage = function (req, res) {
         let name = meta['name'] || 'unknown';
         let desc = meta['description']; // .gsub(/^\[.*\]/,'')
 
+        // for mobile: intent://reswue.gitlab.io/iitc/reswue2.user.js#Intent;scheme=https;action=android.intent.action.VIEW;end;
+        let linkDirect = meta['filename'];
+        let linkIntent = `intent://${localIP()}/${meta['filename']}#Intent;scheme=https;action=android.intent.action.VIEW;end;`
+        let link = isMobileClient() ? linkIntent : linkDirect;
+
         return `
             <div class='script'>
-                <a href='${meta['filename']}'>${name} (${meta['filename']})</a> <span>${meta['version']}</span><br>
+                <a href='${link}'>${name} (${meta['filename']})</a> <span>${meta['version']}</span><br>
                 <div class='desc'>${desc}</div>
             </div>`;
     }
@@ -68,13 +73,18 @@ var IndexPage = function (req, res) {
         `;
     }
 
+    function isMobileClient() {
+        const ua = request.headers['user-agent'];
+        return /Android/.test(ua);
+    }
+
     const head = `<!DOCTYPE html><html><head>
             <title>IITCPluginKit Fileserver</title>
             <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
             <style>${css()}</style>
         </head>`
 
-    res.send(head + `<body>${scriptList()}</body>`);
+    response.send(head + `<body>${scriptList()}</body>`);
 };
 
 
