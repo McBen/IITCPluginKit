@@ -1,5 +1,11 @@
 v1.4.0
 - webpack v5
+- fixed niantic_parameter definition
+- file-server: use special link for mobile
+- add "banner" option in GMAddon
+
+v1.3.0
+ (ups)
 
 v1.2.0
 - Images are nolonger any type
