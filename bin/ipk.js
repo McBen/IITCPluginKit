@@ -34,6 +34,10 @@ async function commandInit() {
     updatePackageJSON();
     if (!fs.existsSync(".eslintrc.js")) fs.copyFileSync(MYDIR + "/bin/.eslintrc.js", ".eslintrc.js", fs.constants.COPYFILE_EXCL);
     if (!fs.existsSync(".gitignore")) fs.copyFileSync(MYDIR + "/bin/gitignore", ".gitignore", fs.constants.COPYFILE_EXCL);
+
+    if (options.eslint) {
+        addLinter();
+    }
 }
 
 
@@ -68,6 +72,7 @@ async function getUserOptions() {
         { type: 'text', name: 'author', message: 'Author?', initial: oldConf.author || packageConf.author },
         { type: 'toggle', name: 'css', message: 'use CSS?', initial: true },
         { type: 'toggle', name: 'git', message: 'use GIT tags for versioning?', initial: true },
+        { type: 'toggle', name: 'eslint', message: 'use ESLint for CodeStyle checks?', initial: true },
         { type: 'text', name: 'entry', message: 'Main file?', initial: oldEntry || "Main.ts" }
     ]);
 
@@ -154,6 +159,14 @@ function updatePackageJSON() {
     fs.writeFileSync(PACKAGEFILE, JSON.stringify(conf, null, 2));
 }
 
+function addLinter() {
+    const args = ["add", "-D",
+        "@typescript-eslint/eslint-plugin", "@typescript-eslint/parser",
+        "eslint", "eslint-plugin-import",
+        "eslint-plugin-prefer-arrow", "eslint-plugin-unicorn"]
+
+    runScript(args);
+}
 
 
 function commandBuildDEV(argv) {
