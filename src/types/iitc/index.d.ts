@@ -51,7 +51,7 @@ interface PortalDetail {
     /** Get portal detail from cache */
     isFresh(guid: string): boolean | undefined;
 
-    /** Request Portal details from server 
+    /** Request Portal details from server
      *  NB: you shouldn't use it.
      */
     request(guid: string): jQuery.Promise;
@@ -176,11 +176,6 @@ interface Window {
 
     // IE
     MSStream: any;
-
-    // Android    
-    useAndroidPanes(): boolean;
-    currentPane: string;
-    show(paneID: string);
 }
 
 type BootCallback = () => void;

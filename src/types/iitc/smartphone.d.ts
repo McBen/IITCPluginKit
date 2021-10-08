@@ -12,11 +12,15 @@ declare global {
      */
     function isSmartphone(): boolean;
 
+    // Android
+    let currentPane: string;
+    function show(paneID: string);
+
     function runOnSmartphonesBeforeBoot(): void;
     function runOnSmartphonesAfterBoot(): void;
 
     function smartphoneInfo(data: { selectedPortalGuid: PortalGUID }): void;
 
     function setAndroidPermalink(): void;
-    function useAndroidPanes(): void;
+    function useAndroidPanes(): boolean;
 }
