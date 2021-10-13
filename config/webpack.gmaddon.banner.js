@@ -27,21 +27,18 @@ class GMAddonBannerPlugin {
                 () => {
                     compilation.chunks.forEach(chunk => {
                         chunk.files.forEach((file) => {
-                            let filename = file.replace(/\?.*/, "");
+                            const filename = file.replace(/\?.*/, "");
 
                             this.updateDownloadURL(filename);
-                            let banner = this.generateMetaBlock(filename);
 
                             if (this.options.downloadURL) {
+                                const metaBlock = this.generateMetaBlock(false);
                                 const outname = compilation.outputOptions.path + "/" + filename.replace(".user.", ".meta.");
                                 fs.mkdirSync(path.dirname(outname), { recursive: true });
-                                fs.writeFileSync(outname, banner);
+                                fs.writeFileSync(outname, metaBlock);
                             }
 
-                            let extraBanner = "";
-                            if (this.options.banner) {
-                                extraBanner = this.options.banner + "\n";
-                            }
+                            const banner = this.generateMetaBlock(true);
                             return compilation.assets[file] = new ConcatSource(extraBanner, banner, '\n', compilation.assets[file]);
                         });
                     });
@@ -60,10 +57,13 @@ class GMAddonBannerPlugin {
     }
 
 
-    generateMetaBlock() {
+    generateMetaBlock(fullDetails) {
         const options = this.options;
         const std_entries = ['name', 'id', 'category', 'version', 'namespace', 'updateURL', 'downloadURL', 'description', 'match', 'include', 'grant', 'run-at'];
         const ignore = ['banner'];
+        if (!fullDetails) {
+            ignore.push("icon64");
+        }
 
         var entries = [];
         std_entries.forEach((cat) => {
@@ -78,7 +78,12 @@ class GMAddonBannerPlugin {
             }
         }
 
-        return '// ==UserScript==\n' + entries.join('\n') + '\n// ==/UserScript==';
+        let extraBanner = "";
+        if (fullDetails && this.options.banner) {
+            extraBanner = this.options.banner + "\n";
+        }
+
+        return extraBanner + '// ==UserScript==\n' + entries.join('\n') + '\n// ==/UserScript==';
     }
 
 
