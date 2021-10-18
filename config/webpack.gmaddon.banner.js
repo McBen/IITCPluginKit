@@ -39,7 +39,7 @@ class GMAddonBannerPlugin {
                             }
 
                             const banner = this.generateMetaBlock(true);
-                            return compilation.assets[file] = new ConcatSource(extraBanner, banner, '\n', compilation.assets[file]);
+                            return compilation.assets[file] = new ConcatSource(banner, '\n', compilation.assets[file]);
                         });
                     });
                 });
