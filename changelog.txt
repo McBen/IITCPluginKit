@@ -1,3 +1,8 @@
+v1.5.0
+- Added ESLint helper to init script
+- Postcss v8 update (had to remove postcss-simple-vars & postcss-color-function)
+- No icon in meta file
+
 v1.4.0
 - webpack v5
 - fixed niantic_parameter definition
