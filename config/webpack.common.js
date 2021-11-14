@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const fs = require('fs');
 const path = require('path');
 const gmbanner = require('./webpack.gmaddon.banner');
-const WrapperPlugin = require('wrapper-webpack-plugin');
+const WrapperPlugin = require('./wrapper-webpack-plugin');
 const { gitDescribeSync } = require('git-describe');
 
 
