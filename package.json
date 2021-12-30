@@ -13,7 +13,7 @@
     "@types/jquery": "^3.3.9",
     "@types/jqueryui": "^1.12.4",
     "@types/leaflet": "^0.7.15-alpha",
-    "@types/node": "^16.10.3",
+    "@types/node": "^17.0.5",
     "concurrently": "^6.0.0",
     "cross-env": "^7.0.2",
     "css-loader": "^5.2.6",
@@ -48,12 +48,12 @@
     "iitcpluginkit": "./bin/ipk.js"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.3.1",
-    "@typescript-eslint/parser": "^5.3.1",
-    "eslint": "^8.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "eslint": "^8.5.0",
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-prefer-arrow": "^1.2.1",
-    "eslint-plugin-unicorn": "^38.0.1"
+    "eslint-plugin-unicorn": "^39.0.0"
   },
   "scripts": {
     "build": "tsc",
