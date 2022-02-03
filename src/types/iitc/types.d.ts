@@ -33,12 +33,29 @@ declare namespace IITC {
         lngE6: number;
         mission: boolean;
         mission50plus: boolean;
-        ornaments: any[];
+        ornaments: Ornaments[];
         resCount: number;
         team: string;
         timestamp: number;
         title: string;
     }
+
+    type Ornaments =
+        "peFRACK" | /** fracker */
+        "sc5_p" | /** scout control */
+        "peBB_BATTLE" | /** BB - Battle */
+        "peBN_RES_WINNER" | /** BB - RES winner */
+        "peBN_ENL_WINNER" | /** BB - ENL winner */
+        "peBN_TIED_WINNER" |  /** BB - Tie */
+        "peENL" |
+        "peRES" |
+        "peFW_ENL" | /** Firework */
+        "peFW_RES" | /** Firework */
+        'peBN_BLM' | /** Black lives matter */
+        'peNEMESIS' |
+        'peTOASTY' |
+        string;
+
 
     interface PortalDataDetail extends PortalData {
         artifactDetail: any;
