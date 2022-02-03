@@ -7,6 +7,8 @@ declare namespace Intel {
     type MarkUp = Array<MarkUpPortal | MarkUpPlayer | MarkUpText>;
     type TeamStr = "RESISTANCE" | "ENLIGHTENED";
 
+    type MarkUp = Array<MarkUpPortal | MarkUpPlayer | MarkUpText>;
+
     interface PlextContainer {
         plext: {
             plextType: "SYSTEM_BROADCAST";
@@ -24,7 +26,14 @@ declare namespace Intel {
 
     type MarkUpText = ["TEXT", MarkUpTextType];
     interface MarkUpTextType {
-        plain: string;
+        plain: string
+        | " destroyed a Resonator on "
+        | " deployed a Resonator on "
+        | " deployed a Beacon on "
+        | " linked " | " to "
+        | " created a Control Field @" | " +" | " Mus"
+        | " captured "
+        ;
     }
 
     type MarkUpPortal = ["PORTAL", MarkUpPortalType];
