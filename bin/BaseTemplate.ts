@@ -6,12 +6,17 @@ class <classname> implements Plugin.Class {
     init() {
         console.log("<classname> " + VERSION);
 
-        <css>require("./styles.css"); </css>
+        <css>// eslint-disable-next-line unicorn/prefer-module
+            require("./styles.css"); </css>
 
         // FILL ME
     }
 
 }
 
-
-Plugin.Register(new <classname>(), "<classname>");
+/**
+ * use "main" to access you main class from everywhere
+ * (same as window.plugin.<classname>) 
+ */
+export const main = new <classname>();
+Plugin.Register(main, "<classname>");
