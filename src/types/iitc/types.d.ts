@@ -33,7 +33,7 @@ declare namespace IITC {
         lngE6: number;
         mission: boolean;
         mission50plus: boolean;
-        ornaments: Ornaments[];
+        ornaments?: Ornaments[];
         resCount: number;
         team: string;
         timestamp: number;
