@@ -123,6 +123,7 @@ module.exports = {
         "unicorn/no-reduce": "off",
         "unicorn/no-nested-ternary": "off",
         "unicorn/no-fn-reference-in-iterator": "off",
+        "unicorn/numeric-separators-style": "off",
         "unicorn/prefer-number-properties": "off",
         "unicorn/prefer-node-append": "off",
         "unicorn/prefer-node-remove": "off",
