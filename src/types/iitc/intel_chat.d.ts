@@ -4,19 +4,21 @@ declare namespace Intel {
     }
 
     type ChatLine = [/*guid*/ string, /*time*/number, PlextContainer];
+    type MarkUp = Array<MarkUpPortal | MarkUpPlayer | MarkUpText>;
+    type TeamStr = "RESISTANCE" | "ENLIGHTENED";
 
     interface PlextContainer {
         plext: {
             plextType: "SYSTEM_BROADCAST";
-            markup: Array<MarkUpPortal | MarkUpPlayer | MarkUpText>;
-            team: "RESISTANCE" | "ENLIGHTENED";
+            markup: MarkUp;
+            team: TeamStr;
             text: string;
         };
     }
 
     type MarkUpPlayer = ["PLAYER", MarkUpPlayerType];
     interface MarkUpPlayerType {
-        team: string;
+        team: TeamStr;
         plain: string;
     }
 
@@ -29,7 +31,7 @@ declare namespace Intel {
     interface MarkUpPortalType {
         latE6: number;
         lngE6: number;
-        team: string;
+        team: TeamStr;
         plain: string;
         name: string;
         address: string;
