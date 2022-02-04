@@ -4,10 +4,8 @@ declare namespace Intel {
     }
 
     type ChatLine = [/*guid*/ string, /*time*/number, PlextContainer];
-    type MarkUp = Array<MarkUpPortal | MarkUpPlayer | MarkUpText>;
-    type TeamStr = "RESISTANCE" | "ENLIGHTENED";
-
-    type MarkUp = Array<MarkUpPortal | MarkUpPlayer | MarkUpText>;
+    type MarkUp = Array<MarkUpPortal | MarkUpPlayer | MarkUpText | MarkUpFaction>;
+    type TeamStr = "RESISTANCE" | "ENLIGHTENED" | "NEUTRAL"; // TODO CHECK if "NEUTRAL" is valid
 
     interface PlextContainer {
         plext: {
@@ -24,6 +22,12 @@ declare namespace Intel {
         plain: string;
     }
 
+    type MarkUpFaction = ["FACTION", MarkUpFactionType];
+    interface MarkUpPlayerType {
+        team: TeamStr | "ALIENS"; // TODO CHECK also check "NEUTRAL" here or in plain only
+        plain: TeamStr | "ALIENS"; // TODO CHECK
+    }
+
     type MarkUpText = ["TEXT", MarkUpTextType];
     interface MarkUpTextType {
         plain: string
@@ -33,6 +37,10 @@ declare namespace Intel {
         | " linked " | " to "
         | " created a Control Field @" | " +" | " Mus"
         | " captured "
+        | " deployed a Very Rare Battle Beacon on "
+        | " won a Very Rare Battle Beacon on "
+        | " deployed a Rare Battle Beacon on "
+        | " won a Rare Battle Beacon on "
         ;
     }
 
