@@ -53,7 +53,7 @@
     "eslint": "^8.5.0",
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-prefer-arrow": "^1.2.1",
-    "eslint-plugin-unicorn": "^40.1.0"
+    "eslint-plugin-unicorn": "^41.0.0"
   },
   "scripts": {
     "build": "tsc",

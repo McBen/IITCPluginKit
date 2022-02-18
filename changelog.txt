@@ -1,3 +1,7 @@
+v1.6.0
+- more chat defines
+- add main class access example
+
 v1.5.0
 - Added ESLint helper to init script
 - Postcss v8 update (had to remove postcss-simple-vars & postcss-color-function)
