@@ -111,11 +111,12 @@ module.exports = {
                 id: config.id,
                 category: config.category || 'Misc',
                 version: versionStringScript,
-                namespace: 'https://github.com/jonatkins/ingress-intel-total-conversion',
+                namespace: 'https://github.com/IITC-CE/ingress-intel-total-conversion',
+                // namespace: 'https://github.com/jonatkins/ingress-intel-total-conversion',
                 downloadURL: config.downloadURL,
                 description: config.description,
                 author: config.author,
-                include: ['https://intel.ingress.com/*'],
+                match: ['https://intel.ingress.com/*'],
                 icon64: image
             })
     ]
