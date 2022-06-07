@@ -91,8 +91,9 @@ class GMAddonBannerPlugin {
         if (typeof (value) == 'function') {
             value = value();
         }
+        if (typeof value === "undefined") return;
 
-        let key = ('// @' + name + ' '.repeat(16)).substr(0, 20);
+        let key = ('// @' + name + ' '.repeat(16)).slice(0, 20);
 
         if (Array.isArray(value)) {
             value.forEach((val) => { entries.push(key + val); });
