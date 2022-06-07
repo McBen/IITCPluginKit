@@ -118,7 +118,7 @@ function createTemplate(options) {
         temp = temp.replace(/<css>/g, "");
         temp = temp.replace(/\s*<\/css>/g, "");
     } else {
-        temp = temp.replace(/<css>.*<\/css>/g, "");
+        temp = temp.replace(/<css>[\s\S]*<\/css>/gm, "");
     }
 
     temp = temp.replace(/<classname>/g, options.classname);
