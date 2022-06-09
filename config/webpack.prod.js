@@ -32,15 +32,32 @@ let develConfig = merge(commonConfig, {
     },
 
     optimization: {
-        minimize: !!global.config.minimize,
+        minimize: true,
         minimizer: [
-            new TerserPlugin({
-                terserOptions: {
-                    compress: {
-                        drop_console: true
+            !!global.config.minimize ?
+                new TerserPlugin({
+                    terserOptions: {
+                        compress: {
+                            drop_console: true
+                        }
                     }
-                }
-            })
+                }) :
+                new TerserPlugin({
+                    terserOptions: {
+                        compress: {
+                            pure_funcs: [
+                                "console.log", "console.assert", "console.debug", "console.info",
+                                "console.time", "console.timeEnd", "console.timeLog"
+                            ]
+                        },
+                        mangle: false,
+                        keep_classnames: true,
+                        keep_fnames: true,
+                        format: {
+                            beautify: true
+                        }
+                    }
+                })
         ]
     }
 });
