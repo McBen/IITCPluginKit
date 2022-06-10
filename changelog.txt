@@ -1,3 +1,8 @@
+v1.7.0
+- compress production build "a little bit"
+  remove comments, remove console.log (except error & warn)
+- allow custom icon (plugin.json: icon)
+
 v1.6.0
 - more chat defines
 - add main class access example
