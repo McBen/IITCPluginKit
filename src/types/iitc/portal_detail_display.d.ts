@@ -17,5 +17,5 @@ declare global {
      * on old selection. Returns false if the selected portal changed.
      * @returns true if it's still the same portal that just needs an update.
      */
-    function selectPortal(guid: PortalGUID): boolean;
+    function selectPortal(guid: PortalGUID | null): boolean;
 }
