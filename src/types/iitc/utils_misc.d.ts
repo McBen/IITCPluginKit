@@ -125,6 +125,8 @@ declare global {
      */
     function makePermalink(latlng: L.LatLng, options?: {}): string;
 
-    // TODO: String.prototype.capitalize = (): string;
-    // TODO: String.prototype.startsWith = (string): boolean;
+
+    interface String {
+        capitalize(): string;
+    }
 }
