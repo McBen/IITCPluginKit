@@ -115,16 +115,22 @@ declare global {
     function clampLatLngBounds(bounds: L.LatLngBounds): L.LatLngBounds;
 
     /**
-     * Makes the permalink for the portal with specified latlng, possibly including current map view.
-     * Portal latlng can be omitted to create mapview-only permalink.
-     * @param option:
-     * - includeMapView: Boolean = null
-     * Use to add zoom level and latlng of current map center.
-     * - fullURL: Boolean = null
-     * Use to make absolute fully qualified URL (default: relative link).
+     * Make the permalink for the portal with specified latlng, possibly including current map view.
+     * Portal latlng can be omitted to create a mapview-only permalink.
      */
-    function makePermalink(latlng: L.LatLng, options?: {}): string;
-
+    type makePermalinkOptions = {
+        /**
+         * Use to add zoom level and latlng of current map center.
+         * @default false = no zoom level
+         */
+        includeMapView: boolean;
+        /**
+         * Use to make absolute fully qualified URL
+         * @default false = relative link
+         */
+        fullURL: boolean;
+    };
+    function makePermalink(latlng: L.LatLng, options?: Partial<makePermalinkOptions>): string;
 
     interface String {
         capitalize(): string;
