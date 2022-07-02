@@ -59,7 +59,7 @@ declare namespace IITC {
 
     interface PortalDataDetail extends PortalData {
         artifactDetail: any;
-        mods: [Mod | NULL, Mod | NULL, Mod | NULL, Mod | NULL];
+        mods: [Mod | null, Mod | null, Mod | null, Mod | null];
         owner: string;
         resonators: Resonator[];
     }
