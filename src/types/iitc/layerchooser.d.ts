@@ -1,4 +1,3 @@
-
 declare global {
     type LayerInfo = {
         layerId: number;
@@ -7,10 +6,10 @@ declare global {
     };
 
     type LayerEntryOption = Partial<{
-        /** 
+        /**
          * baselayer:
          * When `false` - baselayer's status is not tracked.
-         * 
+         *
          * overlays:
          * When `true` (or not specified) - adds overlay to the map as well,
          * if it's last state was active.
@@ -45,7 +44,7 @@ declare global {
     }>;
 
     class LayerChooser extends L.Control.Layers {
-        _layers: { [id: number]: L.LayerGroup<any> };
+        _layers: { [id: number]: { layer: L.ILayer, name: string, overlay: boolean } };
         options: {
             // @option sortLayers: Boolean = true
             // Ensures stable sort order (based on initial), while still providing ability
@@ -94,7 +93,7 @@ declare global {
         setLabel(layer: string | L.LayerGroup<any>, label: string): void;
 
         getLayers(): { baseLayers: LayerInfo[], overlayLayers: LayerInfo[] };
-        showLayer(id: number, show: boolean): void;
+        showLayer(id: number, show: boolean): boolean;
     }
 
     const layerChooser: LayerChooser;
@@ -111,6 +110,3 @@ declare global {
      */
     function removeLayerGroup(layerGroup: L.LayerGroup<any>): void;
 }
-
-
-
