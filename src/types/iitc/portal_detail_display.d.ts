@@ -3,7 +3,11 @@ export { };
 declare global {
     function resetScrollOnNewPortal(): void;
 
-    function renderPortalDetails(guid: PortalGUID): void;
+    /** 
+     * Load & show Portal Details Window 
+     */
+    function renderPortalDetails(guid: PortalGUID | null): void;
+
     function getPortalMiscDetails(guid: PortalGUID, details?: IITC.PortalDataDetail): string;
 
     /**

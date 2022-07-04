@@ -116,8 +116,6 @@ interface Window {
 
 
     /* #region  Portal Viewing */
-    /** Load & show Portal Details Window */
-    renderPortalDetails(guid: PortalGUID | null): void;
 
     /** Make sure Portal is visible in Window */
     zoomToAndShowPortal(guid: PortalGUID, position: L.LatLng): void;
