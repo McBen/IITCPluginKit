@@ -1,7 +1,4 @@
 
-
-
-// TODO: move to IITCPuginKit
 declare global {
     type LayerInfo = {
         layerId: number;
@@ -60,22 +57,22 @@ declare global {
             // A [compare function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
             // that will be used for sorting the layers, when `sortLayers` is `true`.
             // The function receives objects with the layers's data.
-            sortFunction: (A, B) => number;
+            sortFunction: (A: any, B: any) => number;
         };
 
 
         /**
          * Adds a base layer (radio button entry) with the given name to the control.
          */
-        addBaseLayer(layer: L.LayerGroup<any>, name: string, options?: BaseLayerOptions): LayerCooser;
-        addOverlay(layer: L.LayerGroup<any>, name: string, options?: BaseLayerOptions): LayerCooser;
+        // addBaseLayer(layer: L.LayerGroup<any>, name: string, options?: LayerEntryOption): LayerCooser;
+        // addOverlay(layer: L.LayerGroup<any>, name: string, options?: LayerEntryOption): LayerCooser;
 
         /**
          *  Removes the given layer from the control.
          *  Either layer object or it's name in the control must be specified.
          *  Layer is removed from the map as well, except `.keepOnMap` option is true.
          */
-        removeLayer(layer: L.LayerGroup<any> | string, options?: { keepOnMap: boolean }): void;
+        // removeLayer(layer: L.LayerGroup<any> | string, options?: { keepOnMap: boolean }): void;
 
         // @method layerInfo(name: String|Layer): Layer
         // Returns layer info by it's name in the control, or by layer object itself,
