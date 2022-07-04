@@ -20,7 +20,7 @@
 /// <reference path="./map_data_request.d.ts" />
 /// <reference path="./game_status.d.ts" />
 /// <reference path="./utils_misc.d.ts" />
-
+/// <reference path="./layerchooser.d.ts" />
 /// <reference path="./ornaments.d.ts" />
 /// <reference path="./panes.d.ts" />
 /// <reference path="./player_names.d.ts" />
