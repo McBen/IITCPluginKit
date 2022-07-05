@@ -19,7 +19,12 @@ declare global {
      * formula by the great gals and guys at
      * @link http://decodeingress.me/2012/11/18/ingress-portal-levels-and-link-range/
      */
-    function getPortalRange(d: IITC.PortalDataDetail): number;
+    function getPortalRange(d: IITC.PortalDataDetail): {
+        base: number,  // range by level
+        boost: numner, // linkamp factor
+        range: number, // total range
+        isLinkable: boolean // missing resonators?
+    };
 
     /** additional range boost calculation */
     function getLinkAmpRangeBoost(d: IITC.PortalDataDetail): number;
