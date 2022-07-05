@@ -14,7 +14,7 @@ declare global {
      * search through the fields for all that reference a portal
      */
     function getPortalFields(guid: PortalGUID): FieldGUID[];
-    function getPortalFields(guid: PortalGUID): number;
+    function getPortalFieldsCount(guid: PortalGUID): number;
 
     /**
      * find the lat/lon for a portal, using any and all available data
