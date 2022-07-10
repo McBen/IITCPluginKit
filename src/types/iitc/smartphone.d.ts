@@ -14,7 +14,8 @@ declare global {
 
     // Android
     let currentPane: string;
-    function show(paneID: string);
+    function show(paneID: string): void;
+    function hideall(): void;
 
     function runOnSmartphonesBeforeBoot(): void;
     function runOnSmartphonesAfterBoot(): void;

@@ -22,7 +22,6 @@
 /// <reference path="./utils_misc.d.ts" />
 /// <reference path="./layerchooser.d.ts" />
 /// <reference path="./ornaments.d.ts" />
-/// <reference path="./panes.d.ts" />
 /// <reference path="./player_names.d.ts" />
 /// <reference path="./portal_data.d.ts" />
 /// <reference path="./portal_detail_display_tools.d.ts" />
