@@ -16,7 +16,7 @@ interface Android {
     getVersionCode(): number;
     getVersionName(): string;
 
-    addPane(id: string, label: string, icon: string = "ic_action_new_event"): void;
+    addPane(id: string, label: string, icon?: string /*= "ic_action_new_event"*/): void;
     switchToPane(id: string): void;
 
     dialogFocused(id: string): void;
@@ -38,7 +38,7 @@ interface Android {
     getFileRequestUrlPrefix(): string;
     setPermalink(href: string): void;
 
-    reloadIITC(clearCache: boolean = false);
+    reloadIITC(clearCache?: boolean /*= false*/): void;
 }
 
 declare var android: Android;
