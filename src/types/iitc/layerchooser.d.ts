@@ -1,3 +1,5 @@
+import * as L from "leaflet";
+
 declare global {
     type LayerInfo = {
         layerId: number;
