@@ -4,7 +4,7 @@ declare global {
   class RegionScoreboard_ {
     HistoryChart: HistoryChart_;
     setup(): void;
-    shwoDialog(): void;
+    showDialog(): void;
   }
 
   class HistoryChart_ {
