@@ -1,6 +1,4 @@
-
 declare namespace JQueryUI {
-
     interface SpectrumOptions {
         flat: boolean;
         clickoutFiresChange: boolean;
@@ -15,11 +13,8 @@ declare namespace JQueryUI {
     }
 }
 
-
 interface JQuery {
-
     spectrum(): JQuery;
     spectrum(options: JQueryUI.SpectrumOptions): JQuery;
     spectrum(methode: "set", value: string): JQuery;
-
 }

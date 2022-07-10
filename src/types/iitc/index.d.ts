@@ -60,7 +60,6 @@ interface PortalDetail {
 
 
 interface Window {
-
     /* #region Variables  */
     /** All iitc Pluigns */
     plugin: any;
@@ -182,4 +181,3 @@ type BootCallback = () => void;
 declare function load(name: string): any;
 
 declare const PLAYER: Intel.PlayerInfo;
-

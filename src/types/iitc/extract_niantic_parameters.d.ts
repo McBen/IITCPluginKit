@@ -14,4 +14,3 @@ declare global {
         const TILES_PER_EDGE: number[];
     }
 }
-

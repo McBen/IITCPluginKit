@@ -3,8 +3,8 @@ export { };
 declare global {
     function resetScrollOnNewPortal(): void;
 
-    /** 
-     * Load & show Portal Details Window 
+    /**
+     * Load & show Portal Details Window
      */
     function renderPortalDetails(guid: PortalGUID | null): void;
 

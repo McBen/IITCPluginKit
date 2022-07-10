@@ -5,45 +5,48 @@ declare global {
     const iitcBuildDate: string;
 
     // CONFIG OPTIONS ////////////////////////////////////////////////////
-    /** 
+    /**
      * = 30
-     * refresh view every 30s (base time) 
-     **/
+     * refresh view every 30s (base time)
+     */
     var REFRESH: number;
 
-    /** = 5
-     * add 5 seconds per zoom level 
+    /**
+     * = 5
+     * add 5 seconds per zoom level
      */
     var ZOOM_LEVEL_ADJ: number;
 
-    /** 
+    /**
      * = 2.5
-     * refresh time to use after a movement event 
+     * refresh time to use after a movement event
      */
     var ON_MOVE_REFRESH: number;
 
-    /** 
+    /**
      * = 10
-     * limit on refresh time since previous refresh, limiting repeated move refresh rate 
-     * */
+     * limit on refresh time since previous refresh, limiting repeated move refresh rate
+     */
     var MINIMUM_OVERRIDE_REFRESH: number;
 
-    /** = 15 * 60; 
-     * refresh game score every 15 minutes 
+    /**
+     * = 15 * 60;
+     * refresh game score every 15 minutes
      */
     var REFRESH_GAME_SCORE: number;
 
-    /** = 15 * 60
-     * stop updating map after 15min idling 
+    /**
+     * = 15 * 60
+     * stop updating map after 15min idling
      */
     var MAX_IDLE_TIME: number;
 
-    /** 
+    /**
      * = 20
      */
     var HIDDEN_SCROLLBAR_ASSUMED_WIDTH: number;
 
-    /** 
+    /**
      * = 300
      */
     var SIDEBAR_WIDTH: number;
@@ -60,7 +63,7 @@ declare global {
      */
     var FIELD_MU_DISPLAY_AREA_ZOOM_RATIO: number;
 
-    /** 
+    /**
      * Point tolerance for displaying MU's
      * = 60
      */
@@ -86,7 +89,7 @@ declare global {
     var ACCESS_INDICATOR_COLOR: string; // = 'orange';
     var RANGE_INDICATOR_COLOR: string; // = 'red'
 
-    /** 
+    /**
      * min zoom for intel map - should match that used by stock intel
      */
     var MIN_ZOOM: number; // = 3;

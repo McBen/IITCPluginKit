@@ -1,3 +1,3 @@
 declare namespace Intel {
-    type PortalDetails = []
+    type PortalDetails = [];
 }

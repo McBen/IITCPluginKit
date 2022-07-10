@@ -1,5 +1,3 @@
-
-
 interface Android {
 
     saveFile(filename: string, mime: string, content: string): void;

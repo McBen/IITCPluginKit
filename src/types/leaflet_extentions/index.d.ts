@@ -1,22 +1,20 @@
 /* tslint:disable:no-namespace */
 /* tslint:disable:no-empty-interface */
 
-
 // geodesic
 declare namespace L {
-
     interface GeodesicPolylineStatic extends PolylineStatic { }
-    export var GeodesicPolyline: GeodesicPolylineStatic;
+    export const GeodesicPolyline: GeodesicPolylineStatic;
     export interface GeodesicPolyline extends Polyline {
         getLatLngs(): L.LatLng[];
     }
 
     interface GeodesicPolygonStatic extends PolygonStatic { }
-    export var GeodesicPolygon: GeodesicPolygonStatic;
+    export const GeodesicPolygon: GeodesicPolygonStatic;
     export interface GeodesicPolygon extends GeodesicPolyline { }
 
     interface GeodesicCircleStatic extends PolylineStatic { }
-    export var GeodesicCircle: GeodesicCircleStatic;
+    export const GeodesicCircle: GeodesicCircleStatic;
     export interface GeodesicCircle extends GeodesicPolyline { }
 
     function geodesicPolyline(latlngs: L.LatLng[], options: L.PolylineOptions): GeodesicPolyline;

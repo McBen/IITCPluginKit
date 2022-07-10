@@ -41,4 +41,3 @@ export function Register(plugin: Class, name: string) {
         setup();
     }
 }
-
