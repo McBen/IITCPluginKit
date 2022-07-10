@@ -19,9 +19,9 @@ declare global {
      */
     class Ornaments {
         _portals: {};
-        _layer: L.LayerGroup;
-        _beacons: L.LayerGroup;
-        _frackers: L.LayerGroup;
+        _layer: L.LayerGroup<any>;
+        _beacons: L.LayerGroup<any>;
+        _frackers: L.LayerGroup<any>;
         OVERLAY_SIZE: number; // 60,
         OVERLAY_OPACITY: number; // 0.6,
 

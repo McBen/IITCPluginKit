@@ -21,7 +21,7 @@ declare global {
         private init(): void;
         private show(): void;
         private hide(): void;
-        private resultLayer(result: SearchResult): L.LayerGroup;
+        private resultLayer(result: SearchResult): L.LayerGroup<any>;
         private onResultSelected(result: SearchResult, event: any): void;
         private removeSelectedResult(): void;
         private onResultHoverStart(result: SearchResult, event: any): void;
@@ -44,7 +44,7 @@ declare global {
         /** secondary information for this result.Will be interpreted as HTML, so make sure to escape properly. */
         description: JQuery | any[] | Element | Text | string;
         /** a ILayer to be added to the map when the user selects this search result. Will be generated if not set. Set to `null` to prevent the result from being added to the map. */
-        layer?: L.Layer;
+        layer?: L.ILayer;
         /** a URL to a icon to display in the result list. Should be 12x12. */
         icon?: string;
         /**

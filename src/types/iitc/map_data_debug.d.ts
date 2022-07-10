@@ -6,10 +6,10 @@ export class RenderDebugTiles {
     CLEAR_CHECK_TIME: number; // = 0.1;
     FADE_TIME: number; //  = 1.0;
 
-    private debugTileLayer: L.LayerGroup;
-    private debugTileToRectangle: {};
-    private debugTileClearTimes: {};
-    private timer?: number;
+    debugTileLayer: L.LayerGroup<any>;
+    debugTileToRectangle: {};
+    debugTileClearTimes: {};
+    timer?: number;
 
     reset(): void;
     create(id: string, bounds: L.LatLngBounds): void;

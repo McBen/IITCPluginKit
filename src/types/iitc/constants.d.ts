@@ -145,9 +145,9 @@ declare global {
     var portalAccessIndicator: any; // = null;
     var mapRunsUserAction: any; // = false;
 
-    var portalsFactionLayers: L.LayerGroup;
-    var linksFactionLayers: L.LayerGroup;
-    var fieldsFactionLayers: L.LayerGroup;
+    var portalsFactionLayers: L.LayerGroup<any>;
+    var linksFactionLayers: L.LayerGroup<any>;
+    var fieldsFactionLayers: L.LayerGroup<any>;
 
     /** list of all loaded portals */
     var portals: { [guid: string /* PortalGUID */]: IITC.Portal };

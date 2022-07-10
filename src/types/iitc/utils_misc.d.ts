@@ -13,7 +13,7 @@ declare global {
      */
     function aboutIITC(): void;
 
-    function layerGroupLength(layerGroup: L.LayerGroup): number;
+    function layerGroupLength(layerGroup: L.LayerGroup<any>): number;
 
     /** retrieves parameter from the URL?query=string. */
     function getURLParam(param: string): string;
@@ -106,9 +106,9 @@ declare global {
      */
     function isLayerGroupDisplayed(name: string, defaultDisplay: boolean): boolean;
 
-    function addLayerGroup(name: string, layerGroup: L.LayerGroup, defaultDisplay?: boolean): void;
+    function addLayerGroup(name: string, layerGroup: L.LayerGroup<any>, defaultDisplay?: boolean): void;
 
-    function removeLayerGroup(layerGroup: L.LayerGroup): void;
+    function removeLayerGroup(layerGroup: L.LayerGroup<any>): void;
 
     function clampLatLng(latlng: L.LatLng): L.LatLng;
 
