@@ -3,7 +3,7 @@ declare namespace Intel {
         result: ChatLine[];
     }
 
-    type ChatLine = [/*guid*/ string, /*time*/number, PlextContainer];
+    type ChatLine = [guid: string, time: number, PlextContainer];
     type MarkUp = Array<MarkUpPortal | MarkUpPlayer | MarkUpText | MarkUpFaction>;
     type TeamStr = "RESISTANCE" | "ENLIGHTENED" | "NEUTRAL"; // TODO CHECK if "NEUTRAL" is valid
 
@@ -23,7 +23,7 @@ declare namespace Intel {
     }
 
     type MarkUpFaction = ["FACTION", MarkUpFactionType];
-    interface MarkUpPlayerType {
+    interface MarkUpFactionType {
         team: TeamStr | "ALIENS"; // TODO CHECK also check "NEUTRAL" here or in plain only
         plain: TeamStr | "ALIENS"; // TODO CHECK
     }
