@@ -21,7 +21,7 @@ declare global {
      */
     function getPortalRange(d: IITC.PortalDataDetail): {
         base: number,  // range by level
-        boost: numner, // linkamp factor
+        boost: number, // linkamp factor
         range: number, // total range
         isLinkable: boolean // missing resonators?
     };
