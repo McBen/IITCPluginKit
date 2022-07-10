@@ -13,7 +13,7 @@ export interface MapDataRequestStatus {
  * and then pass it on to the render class for display purposes
  * Uses the map data cache class to reduce network requests
  */
-declare class MapDataRequest {
+export class MapDataRequest {
     cache: DataCache;
     render: Render;
     debugTiles: RenderDebugTiles;
