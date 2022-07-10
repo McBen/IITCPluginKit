@@ -82,6 +82,9 @@ declare namespace IITC {
         string; /* dummy for future stuff */
     type ModRarity = "COMMON" | "RARE" | "VERY_RARE";
 
+    type ModType = "RES_SHIELD" | "FORCE_AMP" | "TURRET" |
+        "HEATSINK" | "MULTIHACK" | "LINK_AMPLIFIER" | "ULTRA_LINK_AMP";
+
     interface Resonator {
         energy: number;
         level: number;
