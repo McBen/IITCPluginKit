@@ -1,8 +1,4 @@
-import { DataCache } from "./data_cache";
-import { RenderDebugTiles } from "./map_data_debug";
-import { Render } from "./map_data_render";
-
-export interface MapDataRequestStatus {
+interface MapDataRequestStatus {
     short: string;
     long?: string;
     progress?: number;
@@ -13,7 +9,7 @@ export interface MapDataRequestStatus {
  * and then pass it on to the render class for display purposes
  * Uses the map data cache class to reduce network requests
  */
-export class MapDataRequest {
+declare class MapDataRequest {
     cache: DataCache;
     render: Render;
     debugTiles: RenderDebugTiles;
