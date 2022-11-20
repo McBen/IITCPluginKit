@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
     "module": "ES6",
+    "lib": [
+      "ES6"
+    ],
     "target": "ES2017",
     "outDir": "dist/",
     "moduleResolution": "node",
-    "typeRoots": ["node_modules/@types", "types"],
-
-    "strict": true,            
-    "esModuleInterop": true,      
-    "skipLibCheck": true,       
+    "typeRoots": [
+      "node_modules/@types",
+      "types"
+    ],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "declaration": true
   },
