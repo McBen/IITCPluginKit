@@ -2,7 +2,7 @@ IITC-Plugin Kit
 ============
 Addon developing framework for IITC - Ingress Intel Total Conversation.
 
-If you don't know IITC or the game Ingress your landed on the wrong website.
+If you don't know IITC or the game Ingress you're on the wrong website.
 See [www.ingress.com](https://www.ingress.com/), [iitc.app](iitc.app) or [iitc.me](iitc.me)
 
 
