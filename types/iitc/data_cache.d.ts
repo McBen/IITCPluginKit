@@ -21,7 +21,7 @@ declare class DataCache {
     remove(key: string): void;
     get(key: string): any;
     getTime(key: string): number;
-    getFresh(key: string): boolean | undefined;
+    isFresh(key: string): boolean | undefined;
     startExpireInterval(periodInSecond: number): void;
     stopExpireInterval(): void;
     runExpire(): void;
