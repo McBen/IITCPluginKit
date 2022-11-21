@@ -83,7 +83,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: 'url-loader'
+                type: 'asset/inline'
             },
             {
                 test: /\.svg$/,
