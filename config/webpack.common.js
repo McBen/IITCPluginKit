@@ -56,6 +56,7 @@ const icon64 = typeof config.icon !== "undefined" ? (config.icon ? config.icon :
 
 module.exports = {
     entry: './' + config.entry,
+    mode: process.env.NODE_ENV,
 
     watchOptions: {
         poll: true
@@ -118,7 +119,8 @@ module.exports = {
                 description: config.description,
                 author: config.author,
                 match: ['https://intel.ingress.com/*'],
-                icon64: icon64
+                icon64: icon64,
+                changelog: process.env.NODE_ENV === 'production' ? config.changelog : ""
             })
     ]
 };

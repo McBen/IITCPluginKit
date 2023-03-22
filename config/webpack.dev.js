@@ -4,6 +4,7 @@ const path = require('path');
 const dateFormat = require('dateformat');
 const { gitDescribeSync } = require('git-describe');
 
+process.env.NODE_ENV = 'development';
 
 // create special version strings
 global.versionString = function () {
@@ -29,8 +30,6 @@ global.versionStringScript = function () {
 
 const commonConfig = require('./webpack.common.js');
 let develConfig = merge(commonConfig, {
-
-    mode: 'development',
 
     output: {
         filename: `${global.config.id || "myplugin"}.dev.user.js`,

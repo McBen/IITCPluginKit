@@ -2,10 +2,11 @@ const { merge } = require('webpack-merge');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 
+process.env.NODE_ENV = 'production';
+
+
 const commonConfig = require('./webpack.common.js');
 let develConfig = merge(commonConfig, {
-
-    mode: 'production',
 
     output: {
         filename: `${global.config.id || "myplugin"}.user.js`,

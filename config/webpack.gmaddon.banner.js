@@ -5,6 +5,14 @@ const Compilation = require('webpack/lib/Compilation');
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * Options are
+ *  - regular GM_Metadata options
+ *  - "banner": text will be added on top of the file (before meta block)
+ *  - "changelog": filename of text file which will be added on top (after te meta block)
+ *  - "icon64": has set a default image (clear it if you don't want it)
+ */
+
 
 class GMAddonBannerPlugin {
     constructor(options) {
@@ -38,7 +46,10 @@ class GMAddonBannerPlugin {
                                 fs.writeFileSync(outname, metaBlock);
                             }
 
-                            const banner = this.generateMetaBlock(true);
+                            let banner = this.generateMetaBlock(true);
+                            if (this.options.changelog) {
+                                banner += this.getChangelog(this.options.changelog);
+                            }
                             return compilation.assets[file] = new ConcatSource(banner, '\n', compilation.assets[file]);
                         });
                     });
@@ -60,7 +71,7 @@ class GMAddonBannerPlugin {
     generateMetaBlock(fullDetails) {
         const options = this.options;
         const std_entries = ['name', 'id', 'category', 'version', 'namespace', 'updateURL', 'downloadURL', 'description', 'match', 'include', 'grant', 'run-at'];
-        const ignore = ['banner'];
+        const ignore = ['banner', 'changelog'];
         if (!fullDetails) {
             ignore.push("icon64");
         }
@@ -99,6 +110,18 @@ class GMAddonBannerPlugin {
             value.forEach((val) => { entries.push(key + val); });
         } else {
             entries.push(key + value);
+        }
+    }
+
+    getChangelog(filename) {
+        try {
+            let changelog = fs.readFileSync(filename, 'utf8');
+            changelog = changelog.replace(/\/\*/gm, "").replace(/\*\//gm, "");
+            changelog = changelog.replace(/^/gm, " * ");
+            return "\n\n/**\n" + changelog + "\n */";
+        } catch (err) {
+            console.error(err);
+            return "";
         }
     }
 
