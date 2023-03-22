@@ -1,3 +1,6 @@
+v1.8.0
+- add changelog options (will include a text file into the release build)
+
 v1.7.0
 - compress production build "a little bit"
   remove comments, remove console.log (except error & warn)
