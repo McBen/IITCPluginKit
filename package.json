@@ -39,7 +39,6 @@
     "webpack-cli": "^5.0.0",
     "webpack-merge": "^5.0.9",
     "webpack-strip-block": "^0.3.0",
-    "wrapper-webpack-plugin": "^2.0.0",
     "yargs": "^17.0.1"
   },
   "bin": {

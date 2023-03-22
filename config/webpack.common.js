@@ -105,7 +105,8 @@ module.exports = {
         }),
         new WrapperPlugin({
             header: SCRIPT_HEADER,
-            footer: SCRIPT_FOOTER
+            footer: SCRIPT_FOOTER,
+            afterOptimizations: true
         }),
         new gmbanner(
             {
