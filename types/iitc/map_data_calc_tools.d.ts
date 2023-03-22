@@ -1,7 +1,7 @@
 export { };
 
 declare global {
-    var TILE_PARAMS: {
+    const TILE_PARAMS: {
         /**
          * @default [200000,200000,200000,200000,200000,60000,60000,10000,5000,2500,2500,800,300,0,0];
          */
@@ -37,6 +37,7 @@ declare global {
     }
 
     function getMapZoomTileParameters(zoom: number): MapZoomTileParameters;
+    function getDataZoomTileParameters(zoom?: number): MapZoomTileParameters;
 
     /**
      * we can fetch data at a zoom level different to the map zoom.
