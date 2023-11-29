@@ -6,6 +6,10 @@ type PortalGUID = string;
 type LinkGUID = string;
 type FieldGUID = string;
 type TileID = string;
+type Faction = 0 | 1 | 2 | 3;
+type FactionShort = "E" | "R" | "N";
+type FactionString = "ENLIGHTENED" | "RESISTANCE" | "NEUTRAL" | "ALIENS";
+
 
 declare namespace IITC {
 
@@ -19,7 +23,7 @@ declare namespace IITC {
         guid: PortalGUID;
         ent: any;
         level: number;
-        team: number;
+        team: Faction;
         timestamp: number;
         data: PortalData;
     }
@@ -35,7 +39,7 @@ declare namespace IITC {
         mission50plus: boolean;
         ornaments?: Ornaments[];
         resCount: number;
-        team: string;
+        team: FactionShort;
         timestamp: number;
         title: string;
     }
@@ -97,7 +101,7 @@ declare namespace IITC {
     }
 
     interface LinkOptions extends L.PathOptions {
-        team: number;
+        team: Faction;
         guid: string;
         timestamp: number;
         data: LinkData;
@@ -110,7 +114,7 @@ declare namespace IITC {
         oGuid: string;
         oLatE6: number;
         oLngE6: number;
-        team: string;
+        team: FactionShort;
     }
 
     /** Field-Polygon */
@@ -119,14 +123,14 @@ declare namespace IITC {
     }
 
     interface FieldOptions extends L.PathOptions {
-        team: number;
+        team: Faction;
         guid: string;
         timestamp: number;
         data: FieldData;
     }
 
     interface FieldData {
-        team: string;
+        team: FactionShort;
         points: {
             guid: string;
             latE6: number;
