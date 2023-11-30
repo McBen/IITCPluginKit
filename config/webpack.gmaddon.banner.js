@@ -113,18 +113,18 @@ class GMAddonBannerPlugin {
         }
     }
 
-    getChangelog(filename) {
-        try {
-            let changelog = fs.readFileSync(filename, 'utf8');
-            changelog = changelog.replace(/\/\*/gm, "").replace(/\*\//gm, "");
-            changelog = changelog.replace(/^/gm, " * ");
-            return "\n\n/**\n" + changelog + "\n */";
-        } catch (err) {
-            console.error(err);
-            return "";
-        }
+  getChangelog(filename) {
+    try {
+      let changelog = fs.readFileSync(filename, "utf8");
+      changelog = changelog.replace(/\r\n/g, "\n");
+      changelog = changelog.replace(/\/\*/gm, "").replace(/\*\//gm, "");
+      changelog = changelog.replace(/^/gm, " * ");
+      return "\n\n/**\n" + changelog + "\n */";
+    } catch (err) {
+      console.error(err);
+      return "";
     }
-
+  }
 }
 
 module.exports = GMAddonBannerPlugin;
