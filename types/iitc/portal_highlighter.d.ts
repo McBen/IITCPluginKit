@@ -2,7 +2,8 @@ export { };
 
 declare global {
     interface Hightligher {
-        hightlight: (portal: IITC.Portal) => void;
+        hightlight: (data: { portal: IITC.Portal }) => void;
+        setSelected?: (activate: boolean) => void;
     }
 
     /** an object mapping highlighter names to the object containing callback functions */
