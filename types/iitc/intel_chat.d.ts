@@ -4,12 +4,12 @@ declare namespace Intel {
     }
 
     type ChatLine = [guid: string, time: number, PlextContainer];
-    type MarkUp = Array<MarkUpPortal | MarkUpPlayer | MarkUpText | MarkUpFaction>;
+    type MarkUp = (MarkUpPortal | MarkUpPlayer | MarkUpText | MarkUpFaction | MarkUpAtPlayer)[];
     type TeamStr = "RESISTANCE" | "ENLIGHTENED" | "NEUTRAL"; // TODO CHECK if "NEUTRAL" is valid
 
     interface PlextContainer {
         plext: {
-            plextType: "SYSTEM_BROADCAST";
+            plextType: "SYSTEM_BROADCAST" | "SYSTEM_NARROWCAST" | "PLAYER_GENERATED";
             markup: MarkUp;
             team: TeamStr;
             text: string;
@@ -17,6 +17,7 @@ declare namespace Intel {
     }
 
     type MarkUpPlayer = ["PLAYER", MarkUpPlayerType];
+    type MarkUpAtPlayer = ["AT_PLAYER", MarkUpPlayerType];
     interface MarkUpPlayerType {
         team: TeamStr;
         plain: string;
@@ -31,6 +32,7 @@ declare namespace Intel {
     type MarkUpText = ["TEXT", MarkUpTextType];
     interface MarkUpTextType {
         plain: string
+        // incomplete. take as examples:
         | " destroyed a Resonator on "
         | " deployed a Resonator on "
         | " deployed a Beacon on "
