@@ -47,13 +47,13 @@
     "iitcpluginkit": "./bin/ipk.js"
   },
   "devDependencies": {
-    "@definitelytyped/dtslint": "^0.0.152",
-    "@typescript-eslint/eslint-plugin": "^5.8.1",
-    "@typescript-eslint/parser": "^5.8.1",
+    "@definitelytyped/dtslint": "^0.2.13",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
     "eslint": "^8.19.0",
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-prefer-arrow": "^1.2.1",
-    "eslint-plugin-unicorn": "^46.0.0"
+    "eslint-plugin-unicorn": "^51.0.1"
   },
   "scripts": {
     "build": "tsc",
