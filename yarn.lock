@@ -339,10 +339,10 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.5.tgz#a6ce3e556e00fd9895dd872dd172ad0d4bd687f4"
   integrity sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==
 
-"@types/gapi.auth2@^0.0.57":
-  version "0.0.57"
-  resolved "https://registry.yarnpkg.com/@types/gapi.auth2/-/gapi.auth2-0.0.57.tgz#5544a696d97fc979044d48a8bf7de5e2b35899b5"
-  integrity sha512-2nYF2OZlEqWvF5rLk0nrQlAkk51Abe9zLHvA85NZqpIauYT/TluDNsPWkncI969BR/Ts5mdKrXgiWE/f4N6mMQ==
+"@types/gapi.auth2@^0.0.60":
+  version "0.0.60"
+  resolved "https://registry.yarnpkg.com/@types/gapi.auth2/-/gapi.auth2-0.0.60.tgz#a1623ef3ca6f47535d7445ff8691de2da030c846"
+  integrity sha512-KQiyTHRyAcat6marTRAixrkHhkS7mqclcbQvInfxyp7IeUDSUzLBlgH1s0SFaLl1m1jRY6b+qh4NMlmVm0wPEw==
   dependencies:
     "@types/gapi" "*"
 
@@ -387,14 +387,14 @@
   dependencies:
     "@types/geojson" "*"
 
-"@types/node@*":
+"@types/node@*", "@types/node@^20.11.20":
   version "20.11.20"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.11.20.tgz#f0a2aee575215149a62784210ad88b3a34843659"
   integrity sha512-7/rR21OS+fq8IyHTgtLkDK949uzsa6n8BkziAKtPVpugIkO6D+/ooXMvzXxDnZrmtXVfjb1bKQafYpb8s89LOg==
   dependencies:
     undici-types "~5.26.4"
 
-"@types/node@^18.0.0", "@types/node@^18.19.7":
+"@types/node@^18.19.7":
   version "18.19.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.19.18.tgz#7526471b28828d1fef1f7e4960fb9477e6e4369c"
   integrity sha512-80CP7B8y4PzZF0GWx15/gVWRrB5y/bIjNI84NK3cmQJu0WZwvmj2WMA5LcofQFVfLqqCSp545+U2LsrVzX36Zg==

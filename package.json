@@ -9,11 +9,11 @@
   },
   "homepage": "https://github.com/McBen/IITCPluginKit/blob/master/changelog.txt",
   "dependencies": {
-    "@types/gapi.auth2": "^0.0.57",
+    "@types/gapi.auth2": "^0.0.60",
     "@types/jquery": "^3.3.9",
     "@types/jqueryui": "^1.12.4",
     "@types/leaflet": "^0.7.15-alpha",
-    "@types/node": "^18.0.0",
+    "@types/node": "^20.11.20",
     "concurrently": "^7.0.0",
     "cross-env": "^7.0.2",
     "css-loader": "^6.7.2",
