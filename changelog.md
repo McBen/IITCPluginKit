@@ -1,3 +1,8 @@
+v1.8.1
+- dependencies update
+- fixed highlighter definition
+- added AT_PLAYER in chat data
+
 v1.8.0
 - add changelog options (will include a text file into the release build)
 
