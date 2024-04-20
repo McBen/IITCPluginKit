@@ -34,7 +34,8 @@ let develConfig = merge(commonConfig, {
     output: {
         filename: `${global.config.id || "myplugin"}.dev.user.js`,
         path: path.resolve(process.cwd(), 'dist'),
-        devtoolModuleFilenameTemplate: `webpack://[namespace]/${global.config.id || "myplugin"}/[resource-path]?[loaders]`
+        devtoolModuleFilenameTemplate: `webpack://[namespace]/${global.config.id || "myplugin"}/[resource-path]?[loaders]`,
+        publicPath: ""
     },
 });
 
