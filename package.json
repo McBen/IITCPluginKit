@@ -21,6 +21,7 @@
     "dateformat": "^4.5.1",
     "express": "^4.16.2",
     "git-describe": "^4.0.2",
+    "mini-svg-data-uri": "^1.4.4",
     "my-ip": "^1.1.1",
     "postcss": "^8.3.11",
     "postcss-css-variables": "^0.19.0",

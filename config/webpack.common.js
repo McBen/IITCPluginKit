@@ -4,6 +4,7 @@ const path = require('path');
 const gmbanner = require('./webpack.gmaddon.banner');
 const WrapperPlugin = require('./wrapper-webpack-plugin');
 const { gitDescribeSync } = require('git-describe');
+const svgToMiniDataURI = require('mini-svg-data-uri');
 
 
 
@@ -88,10 +89,15 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
-                use: [
-                    { loader: 'svg-url-loader', options: { noquotes: true } }, // NB: not working in css
-                    { loader: 'svgo-loader' },
-                ]
+                type: 'asset/inline',
+                use: 'svgo-loader',
+                generator: {
+                    dataUrl: content => {
+                        // use svgToMiniDataURI to prevent Base64 conversation
+                        content = content.toString();
+                        return svgToMiniDataURI(content);
+                    }
+                },
             }
         ]
     },
