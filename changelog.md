@@ -1,3 +1,7 @@
+v1.8.2
+- dependencies update
+- fixed svg import
+ 
 v1.8.1
 - dependencies update
 - fixed highlighter definition
