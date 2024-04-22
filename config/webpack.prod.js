@@ -10,7 +10,8 @@ let develConfig = merge(commonConfig, {
 
     output: {
         filename: `${global.config.id || "myplugin"}.user.js`,
-        path: path.resolve(process.cwd(), 'dist')
+        path: path.resolve(process.cwd(), 'dist'),
+        publicPath: ""
     },
 
     plugins: [],
