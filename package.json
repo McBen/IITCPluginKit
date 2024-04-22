@@ -5,7 +5,7 @@
   "license": "BSD-1-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/McBen/IITCPluginKit.git"
+    "url": "git+https://github.com/McBen/IITCPluginKit.git"
   },
   "homepage": "https://github.com/McBen/IITCPluginKit/blob/master/changelog.txt",
   "dependencies": {
@@ -43,9 +43,9 @@
     "yargs": "^17.0.1"
   },
   "bin": {
-    "create-ipk": "./bin/ipk.js",
-    "ipk": "./bin/ipk.js",
-    "iitcpluginkit": "./bin/ipk.js"
+    "create-ipk": "bin/ipk.js",
+    "ipk": "bin/ipk.js",
+    "iitcpluginkit": "bin/ipk.js"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.0.2",
