@@ -60,6 +60,6 @@
     "prepublishOnly": "tsc",
     "buildcli": "tsc --build tsconfigCLI.json"
   },
-  "main": "dist/Plugin.js",
-  "types": "dist/Plugin.d.ts"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
 }
