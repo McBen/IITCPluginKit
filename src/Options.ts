@@ -15,22 +15,27 @@ export class Options<OT extends string> {
 
     private key: string;
     private data: { [key: string]: any } = {};
+    private default: { [key: string]: any } = {};
 
     /**
-     * @param key: localStorage key name
+     * @param key the identifier used in localstorage
+     * @param defaults [optional] default values, values used if option is not stored
      */
-    constructor(key: string) {
+    constructor(key: string, defaults?: { [key: string]: any }) {
         this.key = key;
+        if (defaults) this.default = defaults;
+
         this.load();
     }
 
     /**
      * Get option
-     * @returns value | undefined if not present
+     * @return value, if not set default value, if also not set undefined
      */
     get<T>(item: OT): T | undefined {
-        return this.data[item];
+        return this.data[item] || this.default[item];
     }
+
 
     /**
      * Get option with Fallback/default value
@@ -44,6 +49,8 @@ export class Options<OT extends string> {
 
     set<T>(item: OT, data: T): void {
         if (this.data[item] === data) return;
+
+        this.data[item] = (data === this.default[item] ? undefined : data);
 
         this.data[item] = data;
         this.save();
