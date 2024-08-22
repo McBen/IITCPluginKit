@@ -51,7 +51,7 @@ type EventPortalSelected = { selectedPortalGuid: string, unselectedPortalGuid: s
 type EventPublicChatDataAvailable = { raw: any, result: Intel.ChatLine[], processed: any };
 type EventFactionChatDataAvailable = { raw: any, result: Intel.ChatLine[], processed: any };
 type EventPortalDetailsUpdated = { guid: string, portal: IITC.Portal, portalDetails: any /* class portalDetail */, portalData: IITC.PortalData };
-type EventArtifactsUpdated = { old: any, new: any };
+type EventArtifactsUpdated = { old: IITC.ArtefactEntity[], "new": IITC.ArtefactEntity[] };
 type EventMapDataRefreshStart = { bounds: L.LatLngBounds, mapZoom: number, dataZoom: number, minPortalLevel: number, tileBounds: L.LatLngBounds };
 type EventMapDataEntityInject = { callback: (ents: any) => void }; // TODO: ents = portalDetailLoaded.ent
 type EventMapDataRefreshEnd = unknown;

@@ -2,15 +2,27 @@ import * as L from "leaflet";
 
 export { };
 
+interface ArtefactPortalInfo {
+  _data: IITC.PortalDataDetail
+
+  [type: string]: {
+    target?: TEAM_NONE;
+    fragments?: true;
+  }
+}
+declare namespace IITC {
+  type ArtefactEntity = [guid: PortalGUID, timestamp: number, Intel.PortalDetails];
+}
+
 declare global {
   class Artifact {
     // private _layer: L.LayerGroup;
     REFRESH_JITTER: number;  /** 2 minute random period so not all users refresh at once */
     REFRESH_SUCCESS: number;  /** 60 minutes on success */
     REFRESH_FAILURE: number;  /** 2 minute retry on failure */
-    portalInfo: {};
+    portalInfo: { [id: PortalGUID]: ArtefactPortalInfo };
     artifactTypes: { [type: string]: any };
-    entities: [];
+    entities: IITC.ArtefactEntity[];
 
     setup(): void;
     requestData(): void;

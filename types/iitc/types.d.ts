@@ -29,7 +29,7 @@ declare namespace IITC {
     }
 
     interface PortalData {
-        artifactBrief: any;
+        artifactBrief: ArtefactBrief | null;
         health: number;
         image: string; // url
         level: number;
@@ -62,7 +62,7 @@ declare namespace IITC {
 
 
     interface PortalDataDetail extends PortalData {
-        artifactDetail: any;
+        artifactDetail: ArtefactDetail | null;
         mods: [Mod | null, Mod | null, Mod | null, Mod | null];
         owner: string;
         resonators: Resonator[];
@@ -94,6 +94,18 @@ declare namespace IITC {
         level: number;
         owner: string;
     }
+
+    interface ArtefactBrief {
+        fragment: { [id: string]: string[] }; // ["shard-alpha"]=[]
+        target: { [id: string]: string[] }; // ["targetres"]=[]
+    }
+
+    interface ArtefactDetail {
+        type: string;
+        displayName: string;
+        fratments: number[];
+    }
+
 
     /** Link-Marker */
     interface Link extends L.GeodesicPolyline {
