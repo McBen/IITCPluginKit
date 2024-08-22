@@ -98,6 +98,10 @@ module.exports = {
                         return svgToMiniDataURI(content);
                     }
                 },
+            },
+            {
+                test: /\.txt$/i,
+                use: 'raw-loader',
             }
         ]
     },
