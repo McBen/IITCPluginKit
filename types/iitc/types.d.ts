@@ -7,7 +7,7 @@ type LinkGUID = string;
 type FieldGUID = string;
 type TileID = string;
 type Faction = 0 | 1 | 2 | 3;
-type FactionShort = "E" | "R" | "N";
+type FactionShort = "E" | "R" | "N" | "M";
 type FactionString = "ENLIGHTENED" | "RESISTANCE" | "NEUTRAL" | "ALIENS";
 
 

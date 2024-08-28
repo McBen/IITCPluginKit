@@ -75,7 +75,7 @@ declare global {
      * Team colors
      * @default ['#FF6600','#0088FF','#03DC03']
      */
-    var COLORS: [string, string, string];
+    var COLORS: [string, string, string, string];
     var COLORS_LVL: string[]; /** @default ['#000',...,'#9627F4'] */
     var COLORS_MOD: {}; /** @default {VERY_RARE:'#b08cff',RARE:'#73a8ff',COMMON:'#8cffbf'} */
 
@@ -120,15 +120,16 @@ declare global {
 
     // OTHER MORE-OR-LESS CONSTANTS //////////////////////////////////////
     /** Team constants */
+    var TEAM_MAC: number; /** @default 3 */
     var TEAM_ENL: number; /** @default 2 */
     var TEAM_RES: number; /** @default 1 */
     var TEAM_NONE: number; /** @default 0 */
 
     /** Team CSS = ['none', 'res', 'enl'] */
-    var TEAM_TO_CSS: [string, string, string];
+    var TEAM_TO_CSS: [string, string, string, string];
 
-    /** ['Neutral', 'Resistance', 'Enlightened'] */
-    var TEAM_NAMES: [string, string, string];
+    /** ['Neutral', 'Resistance', 'Enlightened', 'Machina'] */
+    var TEAM_NAMES: [string, string, string, string];
 
     // STORAGE ///////////////////////////////////////////////////////////
     // global constiables used for storage. Most likely READ ONLY. Proper
