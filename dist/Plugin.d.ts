@@ -1,3 +1,4 @@
+/// <reference path="../types/index.d.ts" />
 export interface Class {
     init(): void;
 }
