@@ -35,6 +35,7 @@
 /// <reference path="./search.d.ts" />
 /// <reference path="./send_request.d.ts" />
 /// <reference path="./smartphone.d.ts" />
+/// <reference path="./toolbox.d.ts" />
 /// <reference path="./utils_file.d.ts" />
 
 
