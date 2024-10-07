@@ -9,6 +9,7 @@
 /// <reference path="./entity_decode.d.ts" />
 /// <reference path="./entity_info.d.ts" />
 /// <reference path="./extract_niantic_parameters.d.ts" />
+/// <reference path="./filters.d.ts" />
 /// <reference path="./hooks.d.ts" />
 /// <reference path="./idle.d.ts" />
 /// <reference path="./intel_entity.d.ts" />
