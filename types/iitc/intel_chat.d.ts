@@ -8,12 +8,13 @@ declare namespace Intel {
     type TeamStr = "RESISTANCE" | "ENLIGHTENED" | "NEUTRAL"; // TODO CHECK if "NEUTRAL" is valid
 
     interface PlextContainer {
-        plext: {
-            plextType: "SYSTEM_BROADCAST" | "SYSTEM_NARROWCAST" | "PLAYER_GENERATED";
-            markup: MarkUp;
-            team: TeamStr;
-            text: string;
-        };
+        plext: Plext;
+    }
+    interface Plext {
+        plextType: "SYSTEM_BROADCAST" | "SYSTEM_NARROWCAST" | "PLAYER_GENERATED";
+        markup: MarkUp;
+        team: TeamStr;
+        text: string;
     }
 
     type MarkUpPlayer = ["PLAYER", MarkUpPlayerType];

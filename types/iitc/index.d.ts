@@ -4,6 +4,7 @@
 /// <reference path="./boot.d.ts" />
 /// <reference path="./chat.d.ts" />
 /// <reference path="./dialog.d.ts" />
+/// <reference path="./comm.d.ts" />
 /// <reference path="./constants.d.ts" />
 /// <reference path="./data_cache.d.ts" />
 /// <reference path="./entity_decode.d.ts" />
