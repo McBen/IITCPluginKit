@@ -12,6 +12,7 @@
     Plugin.Register(new myPlugin(), "myPlugin");
 */
 /// <reference path="../types/index.d.ts" />
+import "../types";
 
 interface PluginInfo {
     script: {
