@@ -62,10 +62,13 @@ async function getUserOptions() {
 
     const packageConf = readConfig(PACKAGEFILE);
 
+    const current_directory = process.cwd().replace(/\/+$/, '').split('/').pop();
+    const dir_fixed_case = current_directory.replace(/[a-zA-Z]+/g, x => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase())
+
     const categories = ["Cache", "Controls", "Draw", "Highlighter", "Info", "Layer", "Map Tiles", "Portal Info", "Tweaks", "Misc"].sort();
 
     const options = await prompts([
-        { type: 'text', name: 'name', message: 'Plugin name?', initial: oldConf.name || packageConf.name },
+        { type: 'text', name: 'name', message: 'Plugin name?', initial: oldConf.name || packageConf.name || dir_fixed_case },
         {
             type: 'autocomplete', name: 'category', message: 'Category?', initial: oldConf.category || 'Misc',
             choices: categories.map(s => ({ title: s }))
