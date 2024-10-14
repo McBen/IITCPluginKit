@@ -1,5 +1,3 @@
-import { IITC } from "./iitctypes";
-
 export { };
 
 declare global {

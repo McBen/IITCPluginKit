@@ -1,5 +1,3 @@
-import { IITC } from "./iitctypes";
-
 declare global {
   /**
    * given the entity detail data, returns the team the entity belongs to. Uses TEAM_* enum values.

@@ -1,5 +1,4 @@
 import * as L from "leaflet";
-import { IITC } from "./iitctypes";
 import { Intel } from "./inteltypes";
 
 /** class to handle rendering into leaflet the JSON data from the servers */
