@@ -1,7 +1,3 @@
-/**
- * @module IITC
- */
-
 type PortalGUID = string;
 type LinkGUID = string;
 type FieldGUID = string;
