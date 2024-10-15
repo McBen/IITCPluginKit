@@ -93,6 +93,7 @@ const config = tseslint.config(
             "unicorn/numeric-separators-style": "off",
             "unicorn/prefer-dom-node-append": "off",
             "unicorn/prefer-dom-node-remove": "off",
+            "unicorn/prefer-global-this": "off",
             "unicorn/prefer-number-properties": "off",
             "unicorn/prefer-query-selector": "off", // nah, just not my style
             "unicorn/prefer-string-raw": "off",
@@ -101,85 +102,5 @@ const config = tseslint.config(
     }
 );
 
-// config.forEach(c => { if (c.rules) c.rules = { "@typescript-eslint/no-extraneous-class": "error" } })
-
-// yarn eslint . --report-unused-disable-directives-severity=0 --format node_modules/eslint-summary/summary.js
-// yarn eslint . --report-unused-disable-directives-severity=0
-
 export default config;
-
-/*
-export default [{
-
-        "rules": {
-            // TYPESCRIPT
-            "@typescript-eslint/array-type": "error",
-            "@typescript-eslint/explicit-member-accessibility": ["off", { "accessibility": "explicit" }],
-            "@typescript-eslint/indent": "error",
-            "@typescript-eslint/member-ordering": ["error", {
-                "default": [
-                    "static-field",
-                    "instance-field",
-                    "public-static-method",
-                    "constructor"
-                ]
-            }],
-    
-            "@typescript-eslint/no-shadow": ["error", { ignoreTypeValueShadow: true }],
-            "@typescript-eslint/prefer-for-of": "error",
-            "@typescript-eslint/prefer-function-type": "error",
-            "@typescript-eslint/quotes": ["error", "double", { "avoidEscape": true }],
-            "@typescript-eslint/require-array-sort-compare": ["error", { "ignoreStringArrays": true }],
-            "arrow-parens": ["error", "as-needed"],
-            "comma-dangle": "error",
-            "constructor-super": "error",
-            "curly": ["error", "multi-line"],
-            "dot-notation": "error",
-            "eqeqeq": ["error", "smart"],
-            "guard-for-in": "error",
-            "id-blacklist": [
-                "error",
-                "any",
-                "Number",
-                "number",
-                "String",
-                "string",
-                "Boolean",
-                "boolean",
-                "Undefined"
-            ],
-            "id-match": "error",
-            "import/no-default-export": "error",
-            "max-classes-per-file": ["error", 1],
-            "max-len": ["error", { "code": 160 }],
-            "new-parens": "error",
-            "no-bitwise": "error",
-            "no-caller": "error",
-            "no-cond-assign": "error",
-            "no-debugger": "error",
-            "no-empty": "error",
-            "no-eval": "error",
-            "no-multiple-empty-lines": ["error", { "max": 3 }],
-            "no-new-wrappers": "error",
-            "no-throw-literal": "error",
-            "no-trailing-spaces": "error",
-            "no-undef-init": "error",
-            "no-unsafe-finally": "error",
-            "no-unused-expressions": "error",
-            "no-unused-labels": "error",
-            "object-shorthand": "error",
-            "one-var": ["error", "never"],
-            "prefer-arrow/prefer-arrow-functions": "error",
-            "spaced-comment": "error",
-            "use-isnan": "error",
-    
-            // UNICORN
-            "unicorn/filename-case": ["error",
-                {
-                    "case": "pascalCase",
-                    "ignore": [".*\\.d\\.ts$", "^index(\\.d)?\\.ts$", "^API.*", "\\.schema(\\.ts)?", "\\.spec\\.ts$"]
-                }],
-        }
-}]; */
-
 

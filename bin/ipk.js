@@ -155,6 +155,7 @@ function name2class(name) {
 function updatePackageJSON() {
     const conf = readConfig(PACKAGEFILE);
     conf["license"] = conf["license"] || "Unlicense";
+    conf["type"] = "module";
 
     conf.scripts = conf.scripts || {}
     conf.scripts["build"] = "yarn build:dev";
@@ -166,8 +167,21 @@ function updatePackageJSON() {
     fs.writeFileSync(PACKAGEFILE, JSON.stringify(conf, null, 2));
 }
 
-function addLinter() {
-    if (!fs.existsSync("eslint.config.js")) fs.copyFileSync(MYDIR + "/bin/eslint.config.js", "eslint.config.js", fs.constants.COPYFILE_EXCL);
+async function addLinter() {
+    if (fs.existsSync("eslint.config.js")) {
+        fs.copyFileSync("eslint.config.js", "eslint.config.js_bak", fs.constants.COPYFILE_FICLONE);
+    }
+    fs.copyFileSync(MYDIR + "/bin/eslint.config.js", "eslint.config.js", fs.constants.COPYFILE_FICLONE);
+
+    const removeold = ["remove",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
+        "eslint",
+        "eslint-plugin-import",
+        "eslint-plugin-prefer-arrow",
+        "eslint-plugin-unicorn"];
+    await runScript(removeold);
+
 
     const args = ["add", "-D",
         "@eslint/js",
@@ -177,8 +191,13 @@ function addLinter() {
         "@types/eslint__js",
         "typescript-eslint"
     ]
+    await runScript(args);
 
-    runScript(args);
+    const conf = readConfig(PACKAGEFILE);
+    if (!conf["type"]) {
+        conf["type"] = "module";
+        fs.writeFileSync(PACKAGEFILE, JSON.stringify(conf, null, 2));
+    }
 }
 
 
