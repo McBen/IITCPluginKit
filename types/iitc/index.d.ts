@@ -48,7 +48,7 @@
 interface Window {
     /* #region Variables  */
     /** All iitc Pluigns */
-    plugin: any;
+    // plugin: any;
 
     /** iitc-Pluigns setup/initialize function */
     bootPlugins: BootCallback[];
