@@ -12,6 +12,7 @@ const PACKAGEFILE = 'package.json';
 
 require('yargs')
     .command(['init', '*'], 'create empty sceleton plugin (setup config files)', () => { }, () => commandInit())
+    .command('init:linter', 'add (or upgrade) ESLint', () => { }, () => addLinter())
     .command(["build:dev", 'build'], 'build debug plugin', () => { }, (argv) => commandBuildDEV(argv))
     .command('build:prod', 'build release plugin', () => { }, (argv) => commandBuildPROD(argv))
     .command('fileserver', 'run fileserver', () => { }, () => commandServe())
@@ -34,7 +35,6 @@ async function commandInit() {
     updatePackageJSON();
 
     if (options.changelog && !fs.existsSync("changelog.md")) fs.closeSync(fs.openSync("changelog.md", 'w'));
-    if (!fs.existsSync(".eslintrc.js")) fs.copyFileSync(MYDIR + "/bin/.eslintrc.js", ".eslintrc.js", fs.constants.COPYFILE_EXCL);
     if (!fs.existsSync(".gitignore")) fs.copyFileSync(MYDIR + "/bin/gitignore", ".gitignore", fs.constants.COPYFILE_EXCL);
 
     if (options.eslint) {
@@ -167,10 +167,16 @@ function updatePackageJSON() {
 }
 
 function addLinter() {
+    if (!fs.existsSync("eslint.config.js")) fs.copyFileSync(MYDIR + "/bin/eslint.config.js", "eslint.config.js", fs.constants.COPYFILE_EXCL);
+
     const args = ["add", "-D",
-        "@typescript-eslint/eslint-plugin", "@typescript-eslint/parser",
-        "eslint", "eslint-plugin-import",
-        "eslint-plugin-prefer-arrow", "eslint-plugin-unicorn"]
+        "@eslint/js",
+        "eslint",
+        "eslint-plugin-prefer-arrow-functions",
+        "eslint-plugin-unicorn",
+        "@types/eslint__js",
+        "typescript-eslint"
+    ]
 
     runScript(args);
 }
