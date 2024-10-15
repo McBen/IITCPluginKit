@@ -4,11 +4,13 @@
 /// <reference path="./boot.d.ts" />
 /// <reference path="./chat.d.ts" />
 /// <reference path="./dialog.d.ts" />
+/// <reference path="./comm.d.ts" />
 /// <reference path="./constants.d.ts" />
 /// <reference path="./data_cache.d.ts" />
 /// <reference path="./entity_decode.d.ts" />
 /// <reference path="./entity_info.d.ts" />
 /// <reference path="./extract_niantic_parameters.d.ts" />
+/// <reference path="./filters.d.ts" />
 /// <reference path="./hooks.d.ts" />
 /// <reference path="./idle.d.ts" />
 /// <reference path="./intel_entity.d.ts" />
@@ -35,6 +37,7 @@
 /// <reference path="./search.d.ts" />
 /// <reference path="./send_request.d.ts" />
 /// <reference path="./smartphone.d.ts" />
+/// <reference path="./toolbox.d.ts" />
 /// <reference path="./utils_file.d.ts" />
 
 

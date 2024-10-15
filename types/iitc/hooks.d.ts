@@ -1,8 +1,3 @@
-/**
- * @module IITC
- */
-
-
 interface Window {
 
     // HOOKS
