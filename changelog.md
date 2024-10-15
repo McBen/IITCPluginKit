@@ -1,3 +1,10 @@
+v1.9
+- added IITC.toolbox, IITC.filters, IITC.comm
+- added plugin.drawTools; as POC how to add plugins
+- upgrade linter (eslint)
+  for migration or if you didn't used a linter so far run: yarn ipk init:linter 
+  NOTE: it will overwrite your eslint.config.js !
+
 v1.8.2
 - dependencies update
 - fixed svg import
