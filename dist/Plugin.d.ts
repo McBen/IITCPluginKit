@@ -1,5 +1,5 @@
 /// <reference path="../types/index.d.ts" />
-import "../types";
+
 export interface Class {
     init(): void;
 }
