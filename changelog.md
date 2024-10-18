@@ -1,3 +1,6 @@
+v1.9.1
+- load webpack.config.js or webpack.config.cjs
+
 v1.9
 - added IITC.toolbox, IITC.filters, IITC.comm
 - added plugin.drawTools; as POC how to add plugins
