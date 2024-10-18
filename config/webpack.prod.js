@@ -66,7 +66,15 @@ let develConfig = merge(commonConfig, {
 
 
 try {
-    let userConfig = require(path.resolve(process.cwd(), 'webpack.config.js'));
+    let userConfig;
+    ['webpack.config.cjs', 'webpack.config.js'].some(name => {
+        const pname = path.resolve(process.cwd(), name);
+        if (fs.existsSync(pname)) {
+            userConfig = require(pname);
+            return true;
+        }
+    })
+
     if (typeof userConfig === 'function') {
         userConfig(develConfig);
     } else {
