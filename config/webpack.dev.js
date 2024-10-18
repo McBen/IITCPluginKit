@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const path = require('path');
+const fs = require('fs');
 const dateFormat = require('dateformat');
 const { gitDescribeSync } = require('git-describe');
 
