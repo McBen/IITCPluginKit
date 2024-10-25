@@ -1,3 +1,6 @@
+v1.9.2 + 1.9.3
+- fixing 1.9.1
+
 v1.9.1
 - load webpack.config.js or webpack.config.cjs
 
