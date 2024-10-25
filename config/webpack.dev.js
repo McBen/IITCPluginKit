@@ -55,7 +55,9 @@ try {
     if (typeof userConfig === 'function') {
         userConfig(develConfig);
     } else {
-        develConfig = merge(develConfig, userConfig);
+        if (userConfig) {
+            develConfig = merge(develConfig, userConfig);
+        }
     }
 } catch (error) {
     if (error.code !== 'MODULE_NOT_FOUND') {
