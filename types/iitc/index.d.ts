@@ -26,6 +26,7 @@
 /// <reference path="./ornaments.d.ts" />
 /// <reference path="./player_names.d.ts" />
 /// <reference path="./portal_data.d.ts" />
+/// <reference path="./portal_detail.d.ts" />
 /// <reference path="./portal_detail_display_tools.d.ts" />
 /// <reference path="./portal_detail_display.d.ts" />
 /// <reference path="./portal_hightlighter.d.ts" />
