@@ -2,6 +2,7 @@
 const fs = require('fs');
 const os = require('os');
 const cp = require('child_process');
+const path = require('path');
 const prompts = require('prompts');
 const { exit } = require('process');
 
@@ -62,7 +63,7 @@ async function getUserOptions() {
 
     const packageConf = readConfig(PACKAGEFILE);
 
-    const current_directory = process.cwd().replace(/\/+$/, '').split('/').pop();
+    const current_directory = path.basename(process.cwd());
     const dir_fixed_case = current_directory.replace(/[a-zA-Z]+/g, x => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase())
 
     const categories = ["Cache", "Controls", "Draw", "Highlighter", "Info", "Layer", "Map Tiles", "Portal Info", "Tweaks", "Misc"].sort();
