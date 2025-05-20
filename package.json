@@ -19,7 +19,7 @@
     "css-loader": "^7.1.1",
     "cssnano": "^7.0.5",
     "dateformat": "^4.5.1",
-    "express": "^4.16.2",
+    "express": "^5.1.0",
     "git-describe": "^4.0.2",
     "mini-svg-data-uri": "^1.4.4",
     "my-ip": "^1.1.1",
