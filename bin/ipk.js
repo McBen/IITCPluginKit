@@ -189,7 +189,6 @@ async function addLinter() {
         "eslint",
         "eslint-plugin-prefer-arrow-functions",
         "eslint-plugin-unicorn",
-        "@types/eslint__js",
         "typescript-eslint"
     ]
     await runScript(args);
