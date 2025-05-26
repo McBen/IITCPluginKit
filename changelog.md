@@ -1,3 +1,9 @@
+v1.9.4
+- dependencies updates
+- remove obsolete eslint types
+- fix default plugin name (on windows)
+- add missing type (thx gyeoul)
+
 v1.9.2 + 1.9.3
 - fixing 1.9.1
 
