@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const os = require('os');
-const cp = require('child_process');
 const path = require('path');
 const prompts = require('prompts');
 const { exit } = require('process');
+const { exec } = require('child_process');
 
 const MYDIR = "./node_modules/iitcpluginkit";
 const PLUGIN_CONFIG = "plugin.json";
@@ -232,9 +232,11 @@ function runScript(args) {
         cmd = 'yarn.cmd'
     }
 
-    const proc = cp.spawn(cmd, args, { stdio: 'inherit' })
-    proc.on('error', function (err) {
-        console.error(err);
+    const cmdLine = cmd + ' ' + args.join(' ');
+    exec(cmdLine, (err, stdout, stderr) => {
+        if (err) {
+            console.error(err);
+            exit(-1);
+        }
     });
-
 }
