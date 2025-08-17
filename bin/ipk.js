@@ -4,7 +4,7 @@ const os = require('os');
 const path = require('path');
 const prompts = require('prompts');
 const { exit } = require('process');
-const { exec } = require('child_process');
+const { exec, spawn } = require('child_process');
 
 const MYDIR = "./node_modules/iitcpluginkit";
 const PLUGIN_CONFIG = "plugin.json";
@@ -214,7 +214,7 @@ function commandBuildPROD(argv) {
 }
 
 function commandServe() {
-    const proc = cp.spawn("node", [MYDIR + "/config/fileserver.js"].concat(process.argv.slice(3)), { stdio: 'inherit' })
+    const proc = spawn("node", [MYDIR + "/config/fileserver.js"].concat(process.argv.slice(3)), { stdio: 'inherit' })
     proc.on('error', function (err) {
         console.error(err);
     });
@@ -226,17 +226,10 @@ function commandAutobuild() {
 
 
 function runScript(args) {
-
     let cmd = 'yarn';
-    if (os.platform() === 'win32') {
-        cmd = 'yarn.cmd'
-    }
-
     const cmdLine = cmd + ' ' + args.join(' ');
-    exec(cmdLine, (err, stdout, stderr) => {
-        if (err) {
-            console.error(err);
-            exit(-1);
-        }
+    const proc = spawn(cmdLine, { stdio: 'inherit', shell: true })
+    proc.on('error', function (err) {
+        console.error(err);
     });
 }
