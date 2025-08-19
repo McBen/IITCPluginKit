@@ -1,63 +1,79 @@
+v1.9.6
+
+- fix node v22+ error message on windows
+
 v1.9.4
+
 - dependencies updates
 - remove obsolete eslint types
 - fix default plugin name (on windows)
 - add missing type (thx gyeoul)
 
 v1.9.2 + 1.9.3
+
 - fixing 1.9.1
 
 v1.9.1
+
 - load webpack.config.js or webpack.config.cjs
 
 v1.9
+
 - added IITC.toolbox, IITC.filters, IITC.comm
 - added plugin.drawTools; as POC how to add plugins
 - upgrade linter (eslint)
-  for migration or if you didn't used a linter so far run: yarn ipk init:linter 
+  for migration or if you didn't used a linter so far run: yarn ipk init:linter
   NOTE: it will overwrite your eslint.config.js !
 
 v1.8.2
+
 - dependencies update
 - fixed svg import
- 
+
 v1.8.1
+
 - dependencies update
 - fixed highlighter definition
 - added AT_PLAYER in chat data
 
 v1.8.0
+
 - add changelog options (will include a text file into the release build)
 
 v1.7.0
+
 - compress production build "a little bit"
   remove comments, remove console.log (except error & warn)
 - allow custom icon (plugin.json: icon)
 
 v1.6.0
+
 - more chat defines
 - add main class access example
 
 v1.5.0
+
 - Added ESLint helper to init script
 - Postcss v8 update (had to remove postcss-simple-vars & postcss-color-function)
 - No icon in meta file
 
 v1.4.0
+
 - webpack v5
 - fixed niantic_parameter definition
 - file-server: use special link for mobile
 - add "banner" option in GMAddon
 
 v1.3.0
- (ups)
+(ups)
 
 v1.2.0
+
 - Images are nolonger any type
   use:
-    import imageTarget from "../images/target.svg";
+  import imageTarget from "../images/target.svg";
   instead of:
-    import * from imageTarget from "../images/target.svg";
+  import \* from imageTarget from "../images/target.svg";
 
 - Android definitions
 - Field definition
@@ -67,15 +83,17 @@ v1.2.0
 - Some fileserver tweaks
 - dependencies updated
 
-
 v1.1.1
+
 - Fixed LineEndings
 - New Option to enable minimizer (default off - for code reviews)
 
 v1.1
+
 - New "downloadURL" in plugin config
 - updated dependencys
 - Fix debug namespace
 
 v1.0.1
-- fix missed rename 
+
+- fix missed rename
