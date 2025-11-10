@@ -33,6 +33,7 @@ async function commandInit() {
     createPluginConf(options);
     createTemplate(options);
     createTSconfig(options);
+    createAdditionalFiles(options);
     updatePackageJSON();
 
     if (options.changelog && !fs.existsSync("changelog.md")) fs.closeSync(fs.openSync("changelog.md", 'w'));
@@ -79,6 +80,7 @@ async function getUserOptions() {
         { type: 'toggle', name: 'css', message: 'use CSS?', initial: true },
         { type: 'toggle', name: 'git', message: 'use GIT tags for versioning?', initial: true },
         { type: 'toggle', name: 'usechangelog', message: 'Include changelog?', initial: true },
+        { type: 'toggle', name: 'useReadme', message: 'Include readme?', initial: true },
         { type: 'toggle', name: 'eslint', message: 'use ESLint for CodeStyle checks?', initial: true },
         { type: 'text', name: 'entry', message: 'Main file?', initial: oldEntry || "Main.ts" }
     ]);
@@ -135,6 +137,30 @@ function createTemplate(options) {
 
     if (options.css && !fs.existsSync("src/styles.css")) {
         fs.writeFileSync("src/styles.css", "");
+    }
+}
+
+function createAdditionalFiles(options) {
+    // TODO: this array might contain other files...
+    const files = new Map([
+        ['readme.md', options.useReadme]
+    ])
+    const replacements = new Map([
+        ['classname', options.classname],
+        ['description', options.description],
+    ])
+
+    for (const [file, enabled] of files) {
+        if (!enabled) continue;
+        if (fs.existsSync(file)) continue;
+
+        let contents = fs.readFileSync(`${MYDIR}/bin/${file}`, 'utf8');
+
+        for (const [key, value] of replacements) {
+            contents = contents.replaceAll(`{${key}}`, value);
+        }
+
+        fs.writeFileSync(file, contents);
     }
 }
 
