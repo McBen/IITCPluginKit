@@ -63,7 +63,6 @@ const config = tseslint.config(
             "@typescript-eslint/no-unsafe-argument": "error",
             "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false, "argsIgnorePattern": "^_" }],
             "@typescript-eslint/restrict-template-expressions": ["error", { allowNumber: true }],
-            "@typescript-eslint/no-confusing-void-expression": ["error", { ignoreArrowShorthand: true }],
             "@typescript-eslint/no-misused-promises": ["error", { "checksVoidReturn": false }],
         },
     },
