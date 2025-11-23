@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "module": "ES6",
+    "module": "es2022",
     "lib": [
-      "ES6",
+      "es2022",
       "dom"
     ],
-    "target": "ES2017",
+    "target": "es2022",
     "outDir": "dist/",
     "moduleResolution": "node",
     "typeRoots": [
