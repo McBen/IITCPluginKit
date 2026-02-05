@@ -40,6 +40,7 @@
 /// <reference path="./smartphone.d.ts" />
 /// <reference path="./toolbox.d.ts" />
 /// <reference path="./utils_file.d.ts" />
+/// <reference path="./utils.d.ts" />
 
 /// <reference path="./extern/leaflet_extentions.d.ts" />
 /// <reference path="./extern/leaflet_googlemutant.d.ts" />
