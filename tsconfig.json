@@ -1,18 +1,13 @@
 {
   "compilerOptions": {
-    "module": "es2022",
-    "lib": [
-      "es2022",
-      "dom"
-    ],
-    "target": "es2022",
-    "outDir": "dist/",
-    "moduleResolution": "node",
-    "typeRoots": [
-      "node_modules/@types",
-      "types"
-    ],
-    "strict": true,
+    "outDir": "./dist/",
+    "rootDir": "./src/",
+    "module": "ES2022",
+    "lib": ["ES2022", "dom"],
+    "target": "ES2022",
+    "moduleResolution": "bundler",
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "types": ["node"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,

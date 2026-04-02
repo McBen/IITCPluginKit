@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "es2022",
+    "target": "es2022",
+    "outDir": "dist/",
+    "rootDir": "./src",
+    "moduleResolution": "bundler",
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "types": [
+      "jquery",
+      "build_constances",
+      "greasemonkey",
+      "iitc",
+      "jqueryui",
+      "leaflet",
+      "images",
+      "node"
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true
+  },
+  "files": ["src/Plugin.ts"]
+}

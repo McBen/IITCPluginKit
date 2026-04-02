@@ -43,11 +43,13 @@
     "yargs": "^17.0.1"
   },
   "bin": {
-    "create-ipk": "bin/ipk.js",
-    "ipk": "bin/ipk.js",
-    "iitcpluginkit": "bin/ipk.js"
+    "create-ipk": "dist/ipk.js",
+    "iitcpluginkit": "dist/ipk.js",
+    "ipk": "dist/ipk.js",
+    "buildx": "yarn webpack --config config/webpack.dev.js"
   },
   "devDependencies": {
+    "@types/prompts": "^2.4.9",
     "@typescript-eslint/eslint-plugin": "^8.2.0",
     "@typescript-eslint/parser": "^8.2.0",
     "eslint": "^9.1.0",
@@ -56,9 +58,7 @@
     "eslint-plugin-unicorn": "^59.0.1"
   },
   "scripts": {
-    "build": "tsc",
-    "_prepublishOnly": "tsc",
-    "buildcli": "tsc --build tsconfigCLI.json"
+    "build": "tsc"
   },
   "main": "dist/Plugin.js",
   "types": "dist/Plugin.d.ts"

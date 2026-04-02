@@ -6,8 +6,8 @@ class <classname> implements Plugin.Class {
     init() {
         console.log("<classname> " + VERSION);
 
-        <css>// eslint-disable-next-line unicorn/prefer-module, @typescript-eslint/no-require-imports
-        require("./styles.css"); </css>
+        <css>// eslint-disable-next-line @typescript-eslint/no-require-imports
+            require("./styles.css"); </css>
 
         // FILL ME
     }
