@@ -3,6 +3,7 @@
   "author": "McBen",
   "version": "1.9.6",
   "license": "BSD-1-Clause",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/McBen/IITCPluginKit.git"
@@ -49,13 +50,16 @@
     "buildx": "yarn webpack --config config/webpack.dev.js"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/prompts": "^2.4.9",
     "@typescript-eslint/eslint-plugin": "^8.2.0",
     "@typescript-eslint/parser": "^8.2.0",
-    "eslint": "^9.1.0",
+    "eslint": "^10.1.0",
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-prefer-arrow": "^1.2.1",
-    "eslint-plugin-unicorn": "^59.0.1"
+    "eslint-plugin-prefer-arrow-functions": "^3.9.1",
+    "eslint-plugin-unicorn": "^64.0.0",
+    "typescript-eslint": "^8.58.0"
   },
   "scripts": {
     "build": "tsc"
