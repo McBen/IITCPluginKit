@@ -7,7 +7,7 @@
     "target": "ES2022",
     "moduleResolution": "bundler",
     "typeRoots": ["./node_modules/@types", "./types"],
-    "types": ["node"],
+    "types": ["node", "iitc"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,

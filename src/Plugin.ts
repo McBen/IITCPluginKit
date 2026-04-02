@@ -11,10 +11,9 @@
 
     Plugin.Register(new myPlugin(), "myPlugin");
 */
-/// <reference path="../types/index.d.ts" />
-import "../types";
+import "../types/index.d.ts";
 
-interface PluginInfo {
+export interface PluginInfo {
     script: {
         version: string,
         name: string
