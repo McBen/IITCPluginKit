@@ -41,6 +41,9 @@
 /// <reference path="./toolbox.d.ts" />
 /// <reference path="./utils_file.d.ts" />
 
+/// <reference path="./extern/leaflet_extentions.d.ts" />
+/// <reference path="./extern/leaflet_googlemutant.d.ts" />
+/// <reference path="./extern/jquery_spectrum.d.ts" />
 
 /**
  * @module IITC
