@@ -15,6 +15,7 @@
     "@types/jqueryui": "^1.12.4",
     "@types/leaflet": "^0.7.15-alpha",
     "@types/node": "^22.4.2",
+    "@types/yargs": "^17.0.35",
     "concurrently": "^9.0.1",
     "cross-env": "^7.0.2",
     "css-loader": "^7.1.1",
@@ -36,12 +37,12 @@
     "svgo-loader": "^4.0.0",
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
-    "typescript": "^5.0.2",
+    "typescript": "^6.0.2",
     "webpack": "^5.40.0",
     "webpack-cli": "^7.0.0",
     "webpack-merge": "^6.0.1",
     "webpack-strip-block": "^0.3.0",
-    "yargs": "^17.0.1"
+    "yargs": "^18.0.0"
   },
   "bin": {
     "create-ipk": "dist/ipk.js",
