@@ -22,7 +22,7 @@ Required software
 
 Tutorial
 ============
-see:  https://github.com/McBen/IITCPluginKit_Example/wiki
+see:  https://mcben.github.io/IITCPluginKit_Example
 
 Starting a new plugin
 ============
