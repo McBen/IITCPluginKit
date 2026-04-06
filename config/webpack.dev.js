@@ -1,9 +1,8 @@
-const webpack = require("webpack");
-const { merge } = require("webpack-merge");
-const path = require("path");
-const fs = require("fs");
-const dateFormat = require("dateformat");
-const { gitDescribeSync } = require("git-describe");
+import { merge } from "webpack-merge";
+import path from "node:path";
+import fs from "node:fs";
+import dateFormat from "dateformat";
+import gitDescribeSync from "git-describe";
 
 process.env.NODE_ENV = "development";
 
@@ -28,8 +27,8 @@ global.versionStringScript = function () {
   return str;
 };
 
-const commonConfig = require("./webpack.common.js");
-let develConfig = merge(commonConfig, {
+const commonConfig = await import("./webpack.common.js");
+let develConfig = merge(commonConfig.default, {
   output: {
     filename: `${global.config.id || "myplugin"}.dev.user.js`,
     path: path.resolve(process.cwd(), "dist"),
@@ -40,10 +39,10 @@ let develConfig = merge(commonConfig, {
 
 try {
   let userConfig;
-  ["webpack.config.cjs", "webpack.config.js"].some((name) => {
+  ["webpack.config.cjs", "webpack.config.js"].some(async (name) => {
     const pname = path.resolve(process.cwd(), name);
     if (fs.existsSync(pname)) {
-      userConfig = require(pname);
+      userConfig = await import(pname);
       return true;
     }
   });
@@ -52,7 +51,7 @@ try {
     userConfig(develConfig);
   } else {
     if (userConfig) {
-      develConfig = merge(develConfig, userConfig);
+      develConfig = merge(develConfig, userConfig.default);
     }
   }
 } catch (error) {
@@ -61,4 +60,4 @@ try {
   }
 }
 
-module.exports = develConfig;
+export default develConfig;
