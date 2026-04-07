@@ -5,7 +5,11 @@
     "outDir": "dist/",
     "rootDir": "./src",
     "moduleResolution": "bundler",
-    "typeRoots": ["./node_modules/@types", "./types"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./types",
+      "./node_modules/iitcpluginkit/types"
+    ],
     "types": [
       "jquery",
       "build_constances",
