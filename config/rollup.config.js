@@ -1,6 +1,6 @@
 import typescript from "@rollup/plugin-typescript";
 import nodeExternals from "rollup-plugin-node-externals";
-import { terser } from "rollup-plugin-terser";
+// import terser from "@rollup/plugin-terser";
 
 export default {
   input: "src/ipk.ts",
