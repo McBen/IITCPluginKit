@@ -8,7 +8,7 @@ import path from "node:path";
  */
 export const getIPKFolder = (): string => {
     const rootdir = import.meta.resolve(`iitcpluginkit/package.json`);
-    const dirname = path.dirname(rootdir).replace(/^file:/, "");
+    const dirname = path.dirname(rootdir).replace(/^file:\/*/, "");
     return dirname;
 }
 
@@ -47,7 +47,7 @@ export const removePackage = async (packages: string[]): Promise<number> => {
 
 const runNpmCommand = async (args: string[]): Promise<number> => {
     return new Promise((resolve, reject) => {
-        const cmdLine = "$npm_execpath " + args.join(" ");
+        const cmdLine = ["node", process.env.npm_execpath, ...args].join(" ");
         const proc = spawn(cmdLine, { stdio: "inherit", shell: true });
         proc.on("close", code => {
             if (code === 0) {
