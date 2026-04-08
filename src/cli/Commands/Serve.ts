@@ -4,8 +4,7 @@ import { getIPKFolder } from "../Run";
 
 
 export const commandServe = (): void => {
-    const mpath = getIPKFolder().replace("file:/", "");
-    const scriptPath = path.join(mpath, "/config/fileserver.js");
+    const scriptPath = path.join(getIPKFolder(), "/config/fileserver.js");
 
     const proc = spawn(
         "node",

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { readConfig } from "./Read";
-import { runScript } from "../Run";
+import { addPackage, removePackage } from "../Run";
 
 const PACKAGEFILE = "package.json";
 
@@ -24,7 +24,6 @@ export const addLinter = async (targetDirectory: string): Promise<void> => {
     );
 
     const removeold = [
-        "remove",
         "@typescript-eslint/eslint-plugin",
         "@typescript-eslint/parser",
         "eslint",
@@ -33,18 +32,16 @@ export const addLinter = async (targetDirectory: string): Promise<void> => {
         "eslint-plugin-unicorn",
     ];
     console.log("Removing old linter packages (if any)...");
-    await runScript(removeold).catch(() => console.log("No old linter packages to remove."));
+    await removePackage(removeold).catch(() => console.log("No old linter packages to remove."));
 
     const args = [
-        "add",
-        "-D",
         "@eslint/js",
         "eslint",
         "eslint-plugin-prefer-arrow-functions",
         "eslint-plugin-unicorn",
         "typescript-eslint",
     ];
-    await runScript(args);
+    await addPackage(args, true);
 
     const config = readConfig(PACKAGEFILE);
     if (!config.type) {

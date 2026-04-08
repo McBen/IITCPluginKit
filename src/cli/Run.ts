@@ -8,7 +8,7 @@ import path from "node:path";
  */
 export const getIPKFolder = (): string => {
     const rootdir = import.meta.resolve(`iitcpluginkit/package.json`);
-    const dirname = path.dirname(rootdir);
+    const dirname = path.dirname(rootdir).replace(/^file:/, "");
     return dirname;
 }
 
@@ -20,8 +20,34 @@ export const getIPKFolder = (): string => {
  * @throws Error if the command fails (non-zero exit code).
  */
 export const runScript = async (args: string[]): Promise<number> => {
+    return runNpmCommand(["run", ...args]);
+}
+
+export const addPackage = async (packages: string[], development: boolean = false): Promise<number> => {
+    if (isYARN()) {
+        return runNpmCommand([development ? "add -D" : "add", ...packages]);
+    } else if (isNPM()) {
+        return runNpmCommand([development ? "install -D" : "install", ...packages]);
+    } else {
+        throw new Error("Unsupported package manager. Only npm and yarn are supported.");
+    }
+}
+
+
+export const removePackage = async (packages: string[]): Promise<number> => {
+    if (isYARN()) {
+        return runNpmCommand(["remove", ...packages]);
+    } else if (isNPM()) {
+        return runNpmCommand(["uninstall", ...packages]);
+    } else {
+        throw new Error("Unsupported package manager. Only npm and yarn are supported.");
+    }
+}
+
+
+const runNpmCommand = async (args: string[]): Promise<number> => {
     return new Promise((resolve, reject) => {
-        const cmdLine = "$npm_execpath run " + args.join(" ");
+        const cmdLine = "$npm_execpath " + args.join(" ");
         const proc = spawn(cmdLine, { stdio: "inherit", shell: true });
         proc.on("close", code => {
             if (code === 0) {
@@ -33,3 +59,11 @@ export const runScript = async (args: string[]): Promise<number> => {
     });
 }
 
+
+const isNPM = (): boolean => {
+    return process.env.npm_execpath?.includes('npm') ?? false;
+}
+
+const isYARN = (): boolean => {
+    return process.env.npm_execpath?.includes('yarn') ?? false;
+}
