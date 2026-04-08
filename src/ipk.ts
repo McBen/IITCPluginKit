@@ -8,7 +8,6 @@ import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 
 
-const MYDIR = "./node_modules/iitcpluginkit"; // __dirname;
 
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
@@ -23,7 +22,7 @@ const commandInit = async (): Promise<void> => {
     fs.mkdirSync("src", { recursive: true });
     createPluginConfig(options);
     createTemplate(options);
-    createTSconfig(MYDIR, options);
+    createTSconfig(getIPKFolder(), options);
     createAdditionalFiles(options);
     updatePackageJSON();
 
@@ -31,13 +30,13 @@ const commandInit = async (): Promise<void> => {
         fs.closeSync(fs.openSync("changelog.md", "w"));
     if (!fs.existsSync(".gitignore"))
         fs.copyFileSync(
-            MYDIR + "/templates/gitignore",
+            path.join(getIPKFolder(), "templates/gitignore"),
             ".gitignore",
             fs.constants.COPYFILE_EXCL,
         );
 
     if (options.eslint) {
-        await addLinter(MYDIR);
+        await addLinter(getIPKFolder());
     }
 };
 
@@ -45,18 +44,18 @@ const commandInit = async (): Promise<void> => {
 const createTemplate = (options: UserOptions): void =>  {
     if (fs.existsSync(options.entry)) return;
 
-    let temp = fs.readFileSync(MYDIR + "/template/BaseTemplate.ts", "utf8");
+    let temporary = fs.readFileSync(path.join(getIPKFolder(), "templates/BaseTemplate.ts"), "utf8");
 
     if (options.css) {
-        temp = temp.replace(/<css>/g, "");
-        temp = temp.replace(/\s*<\/css>/g, "");
+        temporary = temporary.replace(/<css>/g, "");
+        temporary = temporary.replace(/\s*<\/css>/g, "");
     } else {
-        temp = temp.replace(/<css>[\s\S]*<\/css>/gm, "");
+        temporary = temporary.replace(/<css>[\s\S]*<\/css>/gm, "");
     }
 
-    temp = temp.replace(/<classname>/g, options.classname);
+    temporary = temporary.replace(/<classname>/g, options.classname);
 
-    fs.writeFileSync(options.entry, temp);
+    fs.writeFileSync(options.entry, temporary);
 
     if (options.css && !fs.existsSync("src/styles.css")) {
         fs.writeFileSync("src/styles.css", "");
@@ -64,14 +63,14 @@ const createTemplate = (options: UserOptions): void =>  {
 };
 
 
-function commandBuildDEV(argv: any): void {
-    const myargs = ["webpack", "--config", MYDIR + "/config/webpack.dev.js"];
+const commandBuildDEV = (argv: any): void => {
+    const myargs = ["webpack", "--config", getIPKFolder() + "/config/webpack.dev.js"];
     if (argv.watch) myargs.push("--watch");
     void runScript(myargs);
 };
 
-function commandBuildPROD(argv: any): void {
-    const myargs = ["webpack", "--config", MYDIR + "/config/webpack.prod.js"];
+const commandBuildPROD = (argv: any): void => {
+    const myargs = ["webpack", "--config", getIPKFolder() + "/config/webpack.prod.js"];
     if (argv.watch) myargs.push("--watch");
     void runScript(myargs);
 };
@@ -79,7 +78,7 @@ function commandBuildPROD(argv: any): void {
 function commandServe(): void {
     const proc = spawn(
         "node",
-        [MYDIR + "/config/fileserver.js", ...process.argv.slice(3)],
+        [path.join(getIPKFolder(), "/config/fileserver.js"), ...process.argv.slice(3)],
         { stdio: "inherit" },
     );
     proc.on("error", (error: Error) => {
@@ -300,7 +299,7 @@ export const createAdditionalFiles = (options: UserOptions): void => {
         if (!enabled) continue;
         if (fs.existsSync(file)) continue;
 
-        let contents = fs.readFileSync(path.join(MYDIR, "templates", file), 'utf8');
+        let contents = fs.readFileSync(path.join(getIPKFolder(), "templates", file), 'utf8');
 
         for (const [key, value] of replacements) {
             contents = contents.replaceAll(`{${key}}`, value);
@@ -315,49 +314,16 @@ export const createAdditionalFiles = (options: UserOptions): void => {
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------
+const getIPKFolder = (): string => {
+    const rootdir = import.meta.resolve(`iitcpluginkit/package.json`);
+    const dirname = path.dirname(rootdir);
+    return dirname;
+}
+
 
 export const runScript = async (args: string[]): Promise<number> => {
-    // Try to execute known package binaries directly (works when installed
-    // as dependency and with Yarn 2/3/4 PnP). Fall back to invoking `yarn`.
-    // const cmd = args[0];
-    /*   const rest = args.slice(1);
-   
-       // eslint-disable-next-line unicorn/consistent-function-scoping
-       const resolveBinFolder = () => {
-           try {
-               return require.resolve("webpack/bin/webpack.js", {
-                   paths: [process.cwd()],
-               });
-           } catch {
-               try {
-                   return require.resolve("webpack/bin/webpack.js");
-               } catch {
-                   return;
-               }
-           }
-       };
-   
-       const binPath = resolveBinFolder();
-   
-       if (binPath) {
-           return new Promise((resolve, reject) => {
-               const proc = spawn("node", [binPath, ...rest], { stdio: "inherit" });
-               proc.on("close", code => {
-                   if (code === 0) {
-                       resolve(code)
-                   } else {
-                       reject(new Error(`command failed with code ${code}`));
-                   }
-               });
-               proc.on("error", (error) => {
-                   console.error(error);
-               });
-           });
-       }*/
-
-    // Fallback: run via yarn shell (works for yarn v1 projects)
     return new Promise((resolve, reject) => {
-        const cmdLine = "yarn " + args.join(" ");
+        const cmdLine = "$npm_execpath run " + args.join(" ");
         const proc = spawn(cmdLine, { stdio: "inherit", shell: true });
         proc.on("close", code => {
             if (code === 0) {
@@ -478,7 +444,7 @@ void yargs(hideBin(process.argv))
         "init:linter",
         "add (or upgrade) ESLint",
         () => true,
-        () => addLinter(MYDIR),
+        () => addLinter(getIPKFolder()),
     )
     .command(
         ["build:dev", "build"],
