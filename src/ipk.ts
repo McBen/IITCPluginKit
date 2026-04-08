@@ -75,10 +75,13 @@ const commandBuildPROD = (argv: any): void => {
     void runScript(myargs);
 };
 
-function commandServe(): void {
+const commandServe = (): void => {
+    const mpath = getIPKFolder().replace("file:/", "");
+    const scriptPath = path.join(mpath, "/config/fileserver.js");
+
     const proc = spawn(
         "node",
-        [path.join(getIPKFolder(), "/config/fileserver.js"), ...process.argv.slice(3)],
+        [scriptPath, ...process.argv.slice(3)],
         { stdio: "inherit" },
     );
     proc.on("error", (error: Error) => {
