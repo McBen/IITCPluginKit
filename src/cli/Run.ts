@@ -1,6 +1,9 @@
 import { spawn } from "node:child_process";
 import path from "node:path";
 
+/**
+ * trying to keep all the os and npm/yarn specific code in one place
+ */
 
 /**
  * Gets the folder path where the iitcpluginkit package is located.
@@ -8,9 +11,11 @@ import path from "node:path";
  */
 export const getIPKFolder = (): string => {
     const rootdir = import.meta.resolve(`iitcpluginkit/package.json`);
-    const dirname = path.dirname(rootdir).replace(/^file:\/*/, "");
+    // win32 have drive letter first; unix need root slash
+    const dirname = path.dirname(rootdir).replace(/^file:\/*/, isWIN32() ? "" : "/");
     return dirname;
 }
+
 
 
 /**
@@ -59,6 +64,10 @@ const runNpmCommand = async (args: string[]): Promise<number> => {
     });
 }
 
+
+const isWIN32 = (): boolean => {
+    return process.platform === "win32";
+}
 
 const isNPM = (): boolean => {
     return process.env.npm_execpath?.includes('npm') ?? false;
