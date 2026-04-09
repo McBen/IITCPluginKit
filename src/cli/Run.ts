@@ -52,7 +52,7 @@ export const removePackage = async (packages: string[]): Promise<number> => {
 
 const runNpmCommand = async (args: string[]): Promise<number> => {
     return new Promise((resolve, reject) => {
-        const cmdLine = ["node", process.env.npm_execpath, ...args].join(" ");
+        const cmdLine = [isYARN() ? "yarn" : "npm", ...args].join(" ");
         const proc = spawn(cmdLine, { stdio: "inherit", shell: true });
         proc.on("close", code => {
             if (code === 0) {
