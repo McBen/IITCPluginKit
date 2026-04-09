@@ -6,6 +6,12 @@ Breaking changes:
   requires changes of tsconfig.json. You let the script do it with "yarn ipk migrate" but you might lose changes if you modfied it.
   If you want to do it manually compare your local config with ./node_modules/iitcpluginkit/templates/tsconfig.json
 
+  "strict checks" are now enabled by default
+  if you see erros like: "TS2564: Property 'x' has no initializer and is not definitely assigned in the constructor.
+  you should fix these or disable the check by adding
+  "compilerOptions.strictNullChecks": false,
+  to tsconfig.json
+
 - webpack config
   if you're enhanced the webpack config by add a custom one make sure you replace require by import like: "const fs = require('fs');" by "import fs from 'node:fs';"
   and "module.exports" be "export default"

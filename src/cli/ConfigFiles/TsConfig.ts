@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { readConfig } from "./Read";
 import { UserOptions } from "../UserOptions";
-import { getIPKFolder} from "../Run";
+import { getIPKFolder } from "../Run";
 
 
 export const createTSconfig = (targetDiretory: string, options: UserOptions): void => {
@@ -14,31 +14,29 @@ export const createTSconfig = (targetDiretory: string, options: UserOptions): vo
 }
 
 
-export const updateTSconfig = (): void => {
+export const updateTSconfigV6 = (): void => {
     if (!fs.existsSync("tsconfig.json")) return;
 
     const oldConfig = readConfig("tsconfig.json");
 
-    // already updated?
-    if (!oldConfig.include && !oldConfig.types) return;
-
+    // was wrong in old config
     oldConfig.include = undefined;
     oldConfig.types = undefined;
-    oldConfig.module = "es2022";
-    oldConfig.target = "es2022";
-    oldConfig.moduleResolution = "bundler";
-    oldConfig.typeRoots = [
+
+
+    oldConfig.compilerOptions = oldConfig.compilerOptions ?? {};
+    // update module and target to es2022
+    oldConfig.compilerOptions.module = "es2022";
+    oldConfig.compilerOptions.target = "es2022";
+    oldConfig.compilerOptions.moduleResolution = "bundler";
+    oldConfig.compilerOptions.rootDir = "./src";
+
+    // types must now be explicitly included
+    oldConfig.compilerOptions.typeRoots = [
         "./node_modules/@types",
         "./node_modules/iitcpluginkit/types",
     ];
-    oldConfig.noImplicitReturns = undefined;
-    oldConfig.noImplicitAny = undefined;
-    oldConfig.noImplicitThis = undefined;
-    oldConfig.alwaysStrict = undefined;
-    oldConfig.strictNullChecks = undefined;
-    oldConfig.strictFunctionTypes = undefined;
-    oldConfig.noUnusedLocals = undefined;
-    oldConfig.types = [
+    oldConfig.compilerOptions.types = [
         "node",
         "jquery",
         "build_constances",
@@ -46,9 +44,17 @@ export const updateTSconfig = (): void => {
         "iitc",
         "jqueryui",
         "leaflet",
-        "images",
-        "node",
+        "images"
     ];
+
+    // strict options are true by default in ts 6, so we can just remove them
+    oldConfig.compilerOptions.noImplicitReturns = oldConfig.compilerOptions.noImplicitReturns ? undefined : false;
+    oldConfig.compilerOptions.noImplicitAny = oldConfig.compilerOptions.noImplicitAny ? undefined : false;
+    oldConfig.compilerOptions.noImplicitThis = oldConfig.compilerOptions.noImplicitThis ? undefined : false;
+    oldConfig.compilerOptions.alwaysStrict = oldConfig.compilerOptions.alwaysStrict ? undefined : false;
+    oldConfig.compilerOptions.strictNullChecks = oldConfig.compilerOptions.strictNullChecks ? undefined : false;
+    oldConfig.compilerOptions.strictFunctionTypes = oldConfig.compilerOptions.strictFunctionTypes ? undefined : false;
+    oldConfig.compilerOptions.noUnusedLocals = oldConfig.compilerOptions.noUnusedLocals ? undefined : false;
 
     fs.writeFileSync("tsconfig.json", JSON.stringify(oldConfig, undefined, 2));
 }

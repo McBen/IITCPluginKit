@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import { readConfig } from "./Read";
 import { UserOptions } from "../UserOptions";
+import path from "node:path";
+import { getIPKFolder } from "../Run";
 
 
 const PLUGIN_CONFIG = "plugin.json";
@@ -18,6 +20,7 @@ export interface PluginConfig {
     minimize: boolean;
     changelog: string;
     iipk_version?: string;
+    fileversion?: string;
 }
 
 
@@ -43,3 +46,31 @@ export const createPluginConfig = (options: UserOptions): void => {
     fs.writeFileSync(PLUGIN_CONFIG, JSON.stringify(pluginConfig, undefined, 2));
 }
 
+
+export const getConfigVersion = (options: PluginConfig): number => {
+    return versionToNumber(options.fileversion);
+}
+
+
+const getIPKConfigVersion = (): string | undefined => {
+    const ipkPath = path.join(getIPKFolder(), "package.json");
+    const ipkPackage = readConfig(ipkPath);
+    return ipkPackage?.version as string;
+}
+
+export const updateConfigVersion = (pluginConfig: PluginConfig): void => {
+    pluginConfig.fileversion = getIPKConfigVersion();
+    fs.writeFileSync(PLUGIN_CONFIG, JSON.stringify(pluginConfig, undefined, 2));
+}
+
+export const isCurrentVersion = (): boolean => {
+    const config = readPluginConfig();
+    const version = getConfigVersion(config);
+    const expcted = getIPKConfigVersion();
+    return version === versionToNumber(expcted);
+}
+
+const versionToNumber = (version?: string): number => {
+    const parts: number[] = version?.split(".").map(s => parseInt(s)) ?? [0, 0, 0];
+    return parts[0] * 1000000 + parts[1] * 1000 + parts[2];
+}
