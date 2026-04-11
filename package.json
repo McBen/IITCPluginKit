@@ -3,6 +3,7 @@
   "author": "McBen",
   "version": "1.9.6",
   "license": "BSD-1-Clause",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/McBen/IITCPluginKit.git"
@@ -14,6 +15,7 @@
     "@types/jqueryui": "^1.12.4",
     "@types/leaflet": "^0.7.15-alpha",
     "@types/node": "^22.4.2",
+    "@types/yargs": "^17.0.35",
     "concurrently": "^9.0.1",
     "cross-env": "^7.0.2",
     "css-loader": "^7.1.1",
@@ -22,7 +24,6 @@
     "express": "^5.1.0",
     "git-describe": "^4.0.2",
     "mini-svg-data-uri": "^1.4.4",
-    "my-ip": "^1.1.1",
     "postcss": "^8.3.11",
     "postcss-css-variables": "^0.19.0",
     "postcss-import": "^16.0.1",
@@ -35,30 +36,40 @@
     "svgo-loader": "^4.0.0",
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
-    "typescript": "^5.0.2",
+    "typescript": "^6.0.2",
     "webpack": "^5.40.0",
-    "webpack-cli": "^7.0.0",
+    "webpack-cli": "^7.0.2",
     "webpack-merge": "^6.0.1",
     "webpack-strip-block": "^0.3.0",
-    "yargs": "^17.0.1"
+    "yargs": "^18.0.0"
   },
   "bin": {
-    "create-ipk": "bin/ipk.js",
-    "ipk": "bin/ipk.js",
-    "iitcpluginkit": "bin/ipk.js"
+    "create-ipk": "dist/ipk.js",
+    "iitcpluginkit": "dist/ipk.js",
+    "ipk": "dist/ipk.js",
+    "buildx": "yarn webpack --config config/webpack.dev.js"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@rollup/plugin-terser": "^1.0.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/prompts": "^2.4.9",
     "@typescript-eslint/eslint-plugin": "^8.2.0",
     "@typescript-eslint/parser": "^8.2.0",
-    "eslint": "^9.1.0",
+    "eslint": "^10.1.0",
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-prefer-arrow": "^1.2.1",
-    "eslint-plugin-unicorn": "^59.0.1"
+    "eslint-plugin-prefer-arrow-functions": "^3.9.1",
+    "eslint-plugin-unicorn": "^64.0.0",
+    "rollup": "^4.60.1",
+    "rollup-plugin-node-externals": "^8.1.2",
+    "typescript-eslint": "^8.58.0"
   },
   "scripts": {
-    "build": "tsc",
-    "_prepublishOnly": "tsc",
-    "buildcli": "tsc --build tsconfigCLI.json"
+    "prepack": "npm run build",
+    "build": "npm run build:plugin && npm run build:ipk",
+    "build:plugin": "tsc -d -p tsconfig_plugin.json",
+    "build:ipk": "rollup --config config/rollup.config.js"
   },
   "main": "dist/Plugin.js",
   "types": "dist/Plugin.d.ts"

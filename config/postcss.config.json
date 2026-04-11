@@ -1,0 +1,13 @@
+{
+    "plugins": [
+        "postcss-import",
+        "postcss-css-variables",
+        "postcss-nested",
+        [
+            "cssnano",
+            {
+                "preset": "default"
+            }
+        ]
+    ]
+}
