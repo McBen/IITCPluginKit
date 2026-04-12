@@ -11,6 +11,8 @@
 
     Plugin.Register(new myPlugin(), "myPlugin");
 */
+// NOTE: don't rebuild this file by the build script!
+// reference path is needed for the types to work, and the build script will remove it, so we need to keep it as is.
 /// <reference path="../types/index.d.ts" />
 export function Register(plugin, name) {
     const setup = () => {

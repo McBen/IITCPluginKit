@@ -67,7 +67,7 @@
   },
   "scripts": {
     "prepack": "npm run build",
-    "build": "npm run build:plugin && npm run build:ipk",
+    "build": "npm run build:ipk",
     "build:plugin": "tsc -d -p tsconfig_plugin.json",
     "build:ipk": "rollup --config config/rollup.config.js"
   },
