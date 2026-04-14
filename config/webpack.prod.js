@@ -72,13 +72,15 @@ let develConfig = merge(commonConfig.default, {
 
 try {
   let userConfig;
-  ["webpack.config.cjs", "webpack.config.js"].some(async (name) => {
+  const configfiles = ["webpack.config.cjs", "webpack.config.js"];
+  for (const name of configfiles) {
     const pname = path.resolve(process.cwd(), name);
     if (fs.existsSync(pname)) {
+      console.log(`loading user config ${name}`);
       userConfig = await import(pname);
-      return true;
+      break;
     }
-  });
+  }
 
   if (typeof userConfig === "function") {
     userConfig(develConfig);
