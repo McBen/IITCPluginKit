@@ -1,4 +1,3 @@
-import { styleText } from "node:util";
 import { isCurrentVersion } from "../ConfigFiles/Plugin";
 import { getIPKFolder, runScript } from "../Run";
 import { migrate } from "./Migrate";
