@@ -2,15 +2,15 @@ import { merge } from "webpack-merge";
 import path from "node:path";
 import fs from "node:fs";
 import dateFormat from "dateformat";
-import gitDescribeSync from "git-describe";
+import gitDescribe from "git-describe";
 
 process.env.NODE_ENV = "development";
 
 // create special version strings
 global.versionString = function () {
-  let version = config.version || "v0.0.0";
+  let version = "v0.0.0";
   try {
-    const git = gitDescribeSync(".");
+    const git = gitDescribe.gitDescribeSync(".");
     if (git.semverString) version = "v" + git.semverString;
     else if (git.tag) version = git.tag;
     else if (git.raw) version = git.raw;

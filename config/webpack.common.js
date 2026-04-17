@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import webpack from "webpack";
 import WrapperPlugin from "./wrapper-webpack-plugin.js";
 import gmbanner from "./webpack.gmaddon.banner.js";
-import gitDescribeSync from "git-describe";
+import gitDescribe from "git-describe";
 import svgToMiniDataURI from "mini-svg-data-uri";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,7 +21,7 @@ function readConfig(filename) {
 global.getGitTag = function () {
   let version = "v0.0.0";
   try {
-    const git = gitDescribeSync(".");
+    const git = gitDescribe.gitDescribeSync(".");
     if (git.tag) version = git.tag;
   } catch (_) {}
 
