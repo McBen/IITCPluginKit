@@ -9,6 +9,7 @@ declare global {
     class DecodeArray {
         portalSummary(data: any[]): IITC.PortalData | IITC.PortalDataCore | undefined;
         portalDetail(data: any[]): IITC.PortalDataDetail | undefined;
+        portal(data: any[], type: 'detailed' | 'summary' | 'extended'): IITC.PortalDataDetail | undefined;
     }
 
     // private but exposed:

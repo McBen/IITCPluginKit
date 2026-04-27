@@ -8,6 +8,8 @@ declare global {
         /** Get portal detail from cache */
         get(guid: string): IITC.PortalDataDetail | undefined;
 
+        store(guid: string, data: IITC.PortalDataDetail): IITC.PortalDataDetail | undefined;
+
         /** Get portal detail from cache */
         isFresh(guid: string): boolean | undefined;
 

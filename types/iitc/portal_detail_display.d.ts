@@ -8,6 +8,15 @@ declare global {
      */
     function renderPortalDetails(guid: PortalGUID | null): void;
 
+    /**
+     * Renders the details of a portal in the sidebar.
+     *
+     * @function renderPortalToSideBar
+     * @param {L.PortalMarker} portal - The portal marker object holding portal details.
+     */
+    function renderPortalToSideBar(portal: IITC.Portal): void;
+
+
     function getPortalMiscDetails(guid: PortalGUID, details?: IITC.PortalDataDetail): string;
 
     /**
@@ -22,4 +31,6 @@ declare global {
      * @returns true if it's still the same portal that just needs an update.
      */
     function selectPortal(guid: PortalGUID | null): boolean;
+
+
 }
