@@ -4,9 +4,13 @@ declare global {
     function resetScrollOnNewPortal(): void;
 
     /**
-     * Load & show Portal Details Window
+     * Selects a portal, refresh its data and renders the details of the portal in the sidebar.
+     *
+     * @function renderPortalDetails
+     * @param {string|null} guid - The globally unique identifier of the portal to display details for.
+     * @param {boolean} [forceSelect=false] - If true, forces the portal to be selected even if it's already the current portal.
      */
-    function renderPortalDetails(guid: PortalGUID | null): void;
+    function renderPortalDetails(guid: PortalGUID | null, forceSelect = false): void;
 
     /**
      * Renders the details of a portal in the sidebar.
