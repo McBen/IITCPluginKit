@@ -24,5 +24,6 @@
     "strictNullChecks": true,
     "noUnusedLocals": true
   },
-  "files": ["src/Plugin.ts"]
+  "files": ["src/Plugin.ts"],
+  "include": ["src/*"]
 }

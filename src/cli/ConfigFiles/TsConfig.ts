@@ -20,7 +20,6 @@ export const updateTSconfigV6 = (): void => {
     const oldConfig = readConfig("tsconfig.json");
 
     // was wrong in old config
-    oldConfig.include = undefined;
     oldConfig.types = undefined;
 
 
