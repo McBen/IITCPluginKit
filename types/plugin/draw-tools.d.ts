@@ -1,7 +1,14 @@
 export { };
 
+export interface DTPolyLine {
+  type: string; // "polyline",
+  latLngs: L.LatLng[];
+}
 
-interface PluginDrawTools {
+export type DTJson = (DTPolyLine)[];
+
+export const PluginDrawToolsName = "drawTools";
+export interface PluginDrawTools {
   /**
    * localstorage keyname
    * @default 'plugin-draw-tools-layer'
@@ -33,7 +40,7 @@ interface PluginDrawTools {
    * Import draw data
    * @param data draw data; an array of objects
    */
-  import: (data: any /* JSON data */) => void;
+  import: (json: DTJson) => void;
 
 
   /**

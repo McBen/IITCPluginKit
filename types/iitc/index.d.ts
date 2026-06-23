@@ -46,6 +46,8 @@
 /// <reference path="./extern/leaflet_googlemutant.d.ts" />
 /// <reference path="./extern/jquery_spectrum.d.ts" />
 
+import { PluginDrawTools } from "../plugin/draw-tools";
+
 /**
  * @module IITC
  */
@@ -53,7 +55,9 @@
 interface Window {
     /* #region Variables  */
     /** All iitc Pluigns */
-    plugin: any;
+    plugin: {
+        [PluginDrawToolsName]: PluginDrawTools | undefined;
+    };
 
     /** iitc-Pluigns setup/initialize function */
     bootPlugins: BootCallback[];
