@@ -1,13 +1,18 @@
 {
-    "plugins": [
-        "postcss-import",
-        "postcss-css-variables",
-        "postcss-nested",
-        [
-            "cssnano",
-            {
-                "preset": "default"
-            }
-        ]
+  "plugins": [
+    "postcss-import",
+    [
+      "postcss-css-variables",
+      {
+        "preserve": true
+      }
+    ],
+    "postcss-nested",
+    [
+      "cssnano",
+      {
+        "preset": "default"
+      }
     ]
+  ]
 }
