@@ -49,12 +49,6 @@ export interface PluginDrawTools {
   addDrawControl: () => void;
 }
 
-declare global {
-  namespace plugin {
-    const drawTools: PluginDrawTools | undefined;
-  }
-}
-
 /*
   window.plugin.drawTools.merge = {};
   window.plugin.drawTools.merge.status = true;

@@ -52,122 +52,132 @@ import { PluginDrawTools } from "../plugin/draw-tools";
  * @module IITC
  */
 
-interface Window {
-    /* #region Variables  */
-    /** All iitc Pluigns */
-    plugin: {
-        [PluginDrawToolsName]: PluginDrawTools | undefined;
-    };
+// declare global {
+//   namespace plugin {
+//         drawTools: PluginDrawTools | undefined;
+//         [string]: any;
+//   }
+// }
 
-    /** iitc-Pluigns setup/initialize function */
-    bootPlugins: BootCallback[];
+declare global {
+    interface Window {
+        /* #region Variables  */
+        /** All iitc Pluigns */
+        plugin: {
+            "drawTools": PluginDrawTools | undefined;
+            [k: string]: any;
+        };
 
-    /** if true iitc main script was already loaded (plugin need to trigger setup on iths own) */
-    iitcLoaded: boolean;
+        /** iitc-Pluigns setup/initialize function */
+        bootPlugins: BootCallback[];
 
-    /** the Leaflet Map */
-    map: L.Map;
+        /** if true iitc main script was already loaded (plugin need to trigger setup on iths own) */
+        iitcLoaded: boolean;
 
-    /** guid of current selected portal */
-    selectedPortal: PortalGUID | null;
+        /** the Leaflet Map */
+        map: L.Map;
 
-    /** list of all loaded portals */
-    portals: { [guid: string /* PortalGUID */]: IITC.Portal };
+        /** guid of current selected portal */
+        selectedPortal: PortalGUID | null;
 
-    /** list of all loaded links */
-    links: { [guid: string /* LinkGUID */]: IITC.Link };
+        /** list of all loaded portals */
+        portals: { [guid: string /* PortalGUID */]: IITC.Portal };
 
-    /** list of all fields */
-    fields: { [guid: string /* FieldGUID */]: IITC.Field };
+        /** list of all loaded links */
+        links: { [guid: string /* LinkGUID */]: IITC.Link };
 
-    /** google-api */
-    gapi: any;
+        /** list of all fields */
+        fields: { [guid: string /* FieldGUID */]: IITC.Field };
 
-    /** failed data requests calls */
-    failedRequestCount: number;
+        /** google-api */
+        gapi: any;
 
-    /** Layer visibilty control */
-    layerChooser: L.Control.Layers;
+        /** failed data requests calls */
+        failedRequestCount: number;
 
-    /** Request handler */
-    mapDataRequest: MapDataRequest;
-    DEFAULT_MAX_IDLE_TIME: number;
-    DEFAULT_REFRESH: number;
-    MAX_IDLE_TIME: number;
-    REFRESH: number;
+        /** Layer visibilty control */
+        layerChooser: L.Control.Layers;
 
-    portalDetail: PortalDetail;
+        /** Request handler */
+        mapDataRequest: MapDataRequest;
+        DEFAULT_MAX_IDLE_TIME: number;
+        DEFAULT_REFRESH: number;
+        MAX_IDLE_TIME: number;
+        REFRESH: number;
 
-    /* #endregion */
+        portalDetail: PortalDetail;
 
-    startRefreshTimeout(): void;
+        /* #endregion */
 
-    /** Get Links of portal */
-    getPortalLinks(guid: PortalGUID): { in: LinkGUID[]; out: LinkGUID[]; };
+        startRefreshTimeout(): void;
 
-    /** Get Fields of portal */
-    getPortalFields(guid: PortalGUID): FieldGUID[];
+        /** Get Links of portal */
+        getPortalLinks(guid: PortalGUID): { in: LinkGUID[]; out: LinkGUID[]; };
 
-
-    /* #region  Portal Viewing */
-
-    /** Make sure Portal is visible in Window */
-    zoomToAndShowPortal(guid: PortalGUID, position: L.LatLng): void;
-
-    /* #endregion */
-
-    /** Create Portal-Marker */
-    createMarker(position: L.LatLng, options: IITC.PortalOptions): L.CircleMarker;
+        /** Get Fields of portal */
+        getPortalFields(guid: PortalGUID): FieldGUID[];
 
 
-    // Map Stuff
-    getMapZoomTileParameters(dataZoom: number): IITC.TileParameters;
-    getDataZoomForMapZoom(mapZoom: number): number;
-    selectPortalByLatLng(lat: number, lng: number): void;
-    lngToTile(longitude: number, params: IITC.TileParameters): number;
-    latToTile(latitude: number, params: IITC.TileParameters): number;
-    tileToLng(x: number, params: IITC.TileParameters): number;
-    tileToLat(y: number, params: IITC.TileParameters): number;
-    pointToTileId(params: IITC.TileParameters, x: number, y: number): TileID;
+        /* #region  Portal Viewing */
 
-    /* #region  Helper */
-    /** add Layergroup to leaflets layer-chooser */
-    addLayerGroup(name: string, layer: L.LayerGroup<any>, defaultVisibile: boolean, groupname?: string): void;
+        /** Make sure Portal is visible in Window */
+        zoomToAndShowPortal(guid: PortalGUID, position: L.LatLng): void;
 
-    /** remove a layer */
-    removeLayerGroup(layer: L.LayerGroup<any>): void;
+        /* #endregion */
 
-    /** get layer visiblity */
-    isLayerGroupDisplayed(name: string, defaultDisplay?: boolean): boolean;
+        /** Create Portal-Marker */
+        createMarker(position: L.LatLng, options: IITC.PortalOptions): L.CircleMarker;
 
-    /** set layer visiblity */
-    updateDisplayedLayerGroup(name: string, display: boolean): void;
 
-    /** escape Html string */
-    escapeHtmlSpecialChars(name: string): string;
+        // Map Stuff
+        getMapZoomTileParameters(dataZoom: number): IITC.TileParameters;
+        getDataZoomForMapZoom(mapZoom: number): number;
+        selectPortalByLatLng(lat: number, lng: number): void;
+        lngToTile(longitude: number, params: IITC.TileParameters): number;
+        latToTile(latitude: number, params: IITC.TileParameters): number;
+        tileToLng(x: number, params: IITC.TileParameters): number;
+        tileToLat(y: number, params: IITC.TileParameters): number;
+        pointToTileId(params: IITC.TileParameters, x: number, y: number): TileID;
 
-    /** find guid by position E6*/
-    findPortalGuidByPositionE6(latE6: number, lngE6: number): string;
+        /* #region  Helper */
+        /** add Layergroup to leaflets layer-chooser */
+        addLayerGroup(name: string, layer: L.LayerGroup<any>, defaultVisibile: boolean, groupname?: string): void;
 
-    /** prepare marker for OverlappingMarkerSpiderfier */
-    registerMarkerForOMS(marker: L.Marker): void;
+        /** remove a layer */
+        removeLayerGroup(layer: L.LayerGroup<any>): void;
 
-    /** convert time to string */
-    unixTimeToDateTimeString(ticks: Date): string;
+        /** get layer visiblity */
+        isLayerGroupDisplayed(name: string, defaultDisplay?: boolean): boolean;
 
-    /** format time difference */
-    formatInterval(seconds: number, maxTerms?: number): string;
+        /** set layer visiblity */
+        updateDisplayedLayerGroup(name: string, display: boolean): void;
 
-    /** convert time to string hhmm */
-    unixTimeToHHmm(ticks: number): string;
+        /** escape Html string */
+        escapeHtmlSpecialChars(name: string): string;
 
-    /** convert team string to id */
-    teamStringToId(team: string): number;
+        /** find guid by position E6*/
+        findPortalGuidByPositionE6(latE6: number, lngE6: number): string;
 
-    /* #endregion */
+        /** prepare marker for OverlappingMarkerSpiderfier */
+        registerMarkerForOMS(marker: L.Marker): void;
 
-    // IE
-    MSStream: any;
+        /** convert time to string */
+        unixTimeToDateTimeString(ticks: Date): string;
+
+        /** format time difference */
+        formatInterval(seconds: number, maxTerms?: number): string;
+
+        /** convert time to string hhmm */
+        unixTimeToHHmm(ticks: number): string;
+
+        /** convert team string to id */
+        teamStringToId(team: string): number;
+
+        /* #endregion */
+
+        // IE
+        MSStream: any;
+    }
 }
 
 type BootCallback = () => void;
