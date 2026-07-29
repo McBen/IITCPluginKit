@@ -243,7 +243,6 @@ const updateTSconfigV6 = () => {
         return;
     const oldConfig = readConfig("tsconfig.json");
     // was wrong in old config
-    oldConfig.include = undefined;
     oldConfig.types = undefined;
     oldConfig.compilerOptions = oldConfig.compilerOptions ?? {};
     // update module and target to es2022
@@ -267,13 +266,20 @@ const updateTSconfigV6 = () => {
         "images"
     ];
     // strict options are true by default in ts 6, so we can just remove them
-    oldConfig.compilerOptions.noImplicitReturns = oldConfig.compilerOptions.noImplicitReturns ? undefined : false;
-    oldConfig.compilerOptions.noImplicitAny = oldConfig.compilerOptions.noImplicitAny ? undefined : false;
-    oldConfig.compilerOptions.noImplicitThis = oldConfig.compilerOptions.noImplicitThis ? undefined : false;
-    oldConfig.compilerOptions.alwaysStrict = oldConfig.compilerOptions.alwaysStrict ? undefined : false;
-    oldConfig.compilerOptions.strictNullChecks = oldConfig.compilerOptions.strictNullChecks ? undefined : false;
-    oldConfig.compilerOptions.strictFunctionTypes = oldConfig.compilerOptions.strictFunctionTypes ? undefined : false;
-    oldConfig.compilerOptions.noUnusedLocals = oldConfig.compilerOptions.noUnusedLocals ? undefined : false;
+    if (oldConfig.compilerOptions.noImplicitReturns === true)
+        delete oldConfig.compilerOptions.noImplicitReturns;
+    if (oldConfig.compilerOptions.noImplicitAny === true)
+        delete oldConfig.compilerOptions.noImplicitAny;
+    if (oldConfig.compilerOptions.noImplicitThis === true)
+        delete oldConfig.compilerOptions.noImplicitThis;
+    if (oldConfig.compilerOptions.alwaysStrict === true)
+        delete oldConfig.compilerOptions.alwaysStrict;
+    if (oldConfig.compilerOptions.strictNullChecks === true)
+        delete oldConfig.compilerOptions.strictNullChecks;
+    if (oldConfig.compilerOptions.strictFunctionTypes === true)
+        delete oldConfig.compilerOptions.strictFunctionTypes;
+    if (oldConfig.compilerOptions.noUnusedLocals === true)
+        delete oldConfig.compilerOptions.noUnusedLocals;
     fs.writeFileSync("tsconfig.json", JSON.stringify(oldConfig, undefined, 2));
 };
 const createAdditionalFiles = (options) => {
