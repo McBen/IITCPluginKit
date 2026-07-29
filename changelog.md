@@ -1,12 +1,16 @@
-v1.10.2
+### v1.10.3
+
+- dep: terser-plugin (required for release build)
+
+### v1.10.2
 
 - add drawtool definition
 
-v1.10.1
+### v1.10.1
 
 - fixed git-tag versioning
 
-v1.10.0
+## v1.10.0
 
 Breaking changes:
 
@@ -24,26 +28,26 @@ Breaking changes:
   if you're enhanced the webpack config by add a custom one make sure you replace require by import like: "const fs = require('fs');" by "import fs from 'node:fs';"
   and "module.exports" be "export default"
 
-v1.9.6
+### v1.9.6
 
 - fix node v22+ error message on windows
 
-v1.9.4
+### v1.9.4
 
 - dependencies updates
 - remove obsolete eslint types
 - fix default plugin name (on windows)
 - add missing type (thx gyeoul)
 
-v1.9.2 + 1.9.3
+### v1.9.2 + 1.9.3
 
 - fixing 1.9.1
 
-v1.9.1
+### v1.9.1
 
 - load webpack.config.js or webpack.config.cjs
 
-v1.9
+## v1.9
 
 - added IITC.toolbox, IITC.filters, IITC.comm
 - added plugin.drawTools; as POC how to add plugins

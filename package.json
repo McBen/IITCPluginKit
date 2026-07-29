@@ -1,7 +1,7 @@
 {
   "name": "iitcpluginkit",
   "author": "McBen",
-  "version": "1.10.2",
+  "version": "1.10.3",
   "license": "BSD-1-Clause",
   "type": "module",
   "repository": {
@@ -34,6 +34,7 @@
     "svg-url-loader": "^8.0.0",
     "svgo": "^4.0.1",
     "svgo-loader": "^5.0.0",
+    "terser-webpack-plugin": "^5.6.1",
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
     "typescript": "^6.0.2",
