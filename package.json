@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/McBen/IITCPluginKit.git"
   },
-  "homepage": "https://github.com/McBen/IITCPluginKit/blob/master/changelog.txt",
+  "homepage": "https://github.com/McBen/IITCPluginKit/blob/master/changelog.md",
   "dependencies": {
     "@types/gapi.auth2": "^0.0.61",
     "@types/jquery": "^4.0.1",
