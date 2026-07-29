@@ -1,3 +1,11 @@
+v1.10.2
+
+- add drawtool definition
+
+v1.10.1
+
+- fixed git-tag versioning
+
 v1.10.0
 
 Breaking changes:
