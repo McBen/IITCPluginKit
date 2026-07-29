@@ -31,8 +31,9 @@ interface DialogOptions {
     /** Dialog contents (if no text) */
     html?: string | HTMLElement | JQuery;
 
+    /** @deprecated use classes: {["ui-dialog"]="myclass"} */
     dialogClass?: string;
-    classes?: any;
+    classes?: Record<string, string>;
 
     /** single dialog 
      * default: false
