@@ -1,19 +1,30 @@
 import { spawn } from "node:child_process";
 import path from "node:path";
+import process from "node:process";
 
 /**
  * trying to keep all the os and npm/yarn specific code in one place
  */
 
 /**
- * Gets the folder path where the iitcpluginkit package is located.
+ * Gets relative folder path where the iitcpluginkit package is located.
  * @returns The directory path of the iitcpluginkit package.
  */
 export const getIPKFolder = (): string => {
+    // get path of "package.json"
     const rootdir = import.meta.resolve(`iitcpluginkit/package.json`);
-    // win32 have drive letter first; unix need root slash
+
+    // win32 have drive letter first; unix need root slash (also remove filename)
     const dirname = path.dirname(rootdir).replace(/^file:\/*/, isWIN32() ? "" : "/");
-    return dirname;
+
+    // get relative path
+    const res = path.relative(process.cwd(), dirname);
+    return res;
+}
+
+export const getIPKFolderAbsolute = (): string => {
+    const rootdir = import.meta.resolve(`iitcpluginkit/package.json`);
+    return path.dirname(rootdir);
 }
 
 
