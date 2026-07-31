@@ -1,6 +1,7 @@
 import { merge } from "webpack-merge";
 import path from "node:path";
 import fs from "node:fs";
+import url from "node:url";
 import dateFormat from "dateformat";
 import gitDescribe from "git-describe";
 
@@ -44,7 +45,10 @@ try {
     const pname = path.resolve(process.cwd(), name);
     if (fs.existsSync(pname)) {
       console.log(`loading user config ${name}`);
-      userConfig = await import(pname);
+      const __filename = url.fileURLToPath(import.meta.url);
+      const __dirname = path.dirname(__filename);
+      const relpath = path.relative(__dirname, pname).replace(/\\/g, "/");
+      userConfig = await import(relpath);
       break;
     }
   }

@@ -77,7 +77,10 @@ try {
     const pname = path.resolve(process.cwd(), name);
     if (fs.existsSync(pname)) {
       console.log(`loading user config ${name}`);
-      userConfig = await import(pname);
+      const __filename = url.fileURLToPath(import.meta.url);
+      const __dirname = path.dirname(__filename);
+      const relpath = path.relative(__dirname, pname).replace(/\\/g, "/");
+      userConfig = await import(relpath);
       break;
     }
   }
