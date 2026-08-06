@@ -1,6 +1,7 @@
 import { merge } from "webpack-merge";
 import path from "node:path";
 import fs from "node:fs";
+import url from "node:url";
 import TerserPlugin from "terser-webpack-plugin";
 
 process.env.NODE_ENV = "production";
