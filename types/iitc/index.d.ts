@@ -60,6 +60,9 @@ import { PluginDrawTools } from "../plugin/draw-tools";
 // }
 
 declare global {
+
+    declare const PLAYER: Intel.PlayerInfo;
+
     interface Window {
         /* #region Variables  */
         /** All iitc Pluigns */
@@ -185,4 +188,3 @@ type BootCallback = () => void;
 
 declare function load(name: string): any;
 
-declare const PLAYER: Intel.PlayerInfo;
